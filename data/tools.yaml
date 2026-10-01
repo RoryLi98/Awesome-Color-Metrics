@@ -1,0 +1,96 @@
+# Libraries and tools. kind: color (color science), iqa (IQA / distance toolboxes), vdp (standalone perceptual difference tools), chart (test-chart analysis)
+- name: colour
+  url: https://github.com/colour-science/colour
+  language: Python
+  description: Color science toolbox with every common ΔE (CIE 1976 / 1994 / 2000, CMC, DIN99, ITP, CAM02 / CAM16-UCS, HyAB, HyCH), uniform spaces (Jzazbz, ZCAM, sUCS, Oklab), camera characterization and the STRESS index.
+  kind: color
+- name: scikit-image
+  url: https://github.com/scikit-image/scikit-image
+  language: Python
+  description: Lab conversion plus `deltaE_cie76`, `deltaE_ciede94`, `deltaE_ciede2000`, `deltaE_cmc` and `structural_similarity`.
+  kind: color
+- name: ciede2000-color-matching
+  url: https://github.com/michel-leonard/ciede2000-color-matching
+  language: 40+ languages
+  description: Public-domain CIEDE2000 implementations with shared test suites.
+  kind: color
+- name: coloraide
+  url: https://github.com/facelessuser/coloraide
+  language: Python
+  description: Color manipulation library with many color spaces and ΔE methods.
+  kind: color
+- name: culori
+  url: https://github.com/Evercoder/culori
+  language: JavaScript
+  description: Color library for the web with color-difference functions.
+  kind: color
+- name: OpenCV
+  url: https://github.com/opencv/opencv
+  language: C++ / Python
+  description: '`compareHist` (intersection, χ², Bhattacharyya), `EMD`, and `findTransformECC` for photometric-invariant registration.'
+  kind: color
+- name: pyiqa (IQA-PyTorch)
+  url: https://github.com/chaofengc/IQA-PyTorch
+  language: PyTorch
+  description: Largest IQA toolbox; includes `msswd`, `fsim`, `vsi`, `cw_ssim`, `lpips`, `stlpips`, `dists`, `deepdc`, `pieapp`, `ms_ssim` and `gmsd`. Non-commercial license.
+  kind: iqa
+- name: piq
+  url: https://github.com/photosynthesis-team/piq
+  language: PyTorch
+  description: IQA metrics and losses, including FSIM, VSI, MDSI, GMSD, HaarPSI, LPIPS, DISTS and PieAPP.
+  kind: iqa
+- name: POT
+  url: https://github.com/PythonOT/POT
+  language: Python
+  description: Python Optimal Transport; exact EMD, 1-D Wasserstein and sliced Wasserstein distances for color or patch distributions.
+  kind: iqa
+- name: ColorVideoVDP
+  url: https://github.com/gfxdisp/ColorVideoVDP
+  language: PyTorch
+  description: Display-aware visible-difference predictor for images and video (`pip install cvvdp`); also hosts ColorVideoVDP-ML and PU-PSNR.
+  kind: vdp
+- name: HDR-VDP
+  url: https://sourceforge.net/projects/hdrvdp/
+  language: MATLAB / Octave
+  description: HDR-VDP-3 (quality, visibility and contrast-distortion predictions from photometric input).
+  kind: vdp
+- name: FLIP
+  url: https://github.com/NVlabs/flip
+  language: Python / C++ / CUDA
+  description: LDR and HDR FLIP error maps (`pip install flip-evaluator`).
+  kind: vdp
+- name: Butteraugli
+  url: https://github.com/google/butteraugli
+  language: C++
+  description: Psychovisual difference score and spatial difference map aimed at barely noticeable differences, used in JPEG XL encoding.
+  kind: vdp
+- name: SSIMULACRA 2
+  url: https://github.com/cloudinary/ssimulacra2
+  language: C++
+  description: Perceptual metric for compression artifacts computed in a perceptual color space, tuned on CID22, TID2013, KADID-10k and KonFiG-IQA.
+  kind: vdp
+- name: colour-checker-detection
+  url: https://github.com/colour-science/colour-checker-detection
+  language: Python
+  description: Detects ColorChecker charts and extracts patch colors.
+  kind: chart
+- name: sfrmat
+  url: https://burnsdigitalimaging.com/software/sfrmat/
+  language: MATLAB
+  description: Reference slanted-edge SFR implementation for ISO 12233 by Peter Burns (BSD).
+  kind: chart
+- name: MTF Mapper
+  url: https://sourceforge.net/projects/mtfmapper/
+  language: C++
+  description: Open-source slanted-edge MTF measurement (BSD).
+  kind: chart
+- name: Imatest Colorcheck docs
+  url: https://docs.imatest.com/docs/colorcheck
+  language: commercial
+  description: Documentation of chart-based ΔE00, ΔC00 and saturation measurements; useful even without the software.
+  kind: chart
+- name: iQ-Analyzer-X
+  url: https://www.image-engineering.de/en/products/software/iq-analyzer-x
+  language: commercial
+  description: Commercial analysis of SFR, texture, OECF, color, shading, distortion and noise charts.
+  kind: chart

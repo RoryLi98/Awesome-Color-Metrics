@@ -1,0 +1,298 @@
+# deep: one entry per metric; see CONTRIBUTING.md for the schema
+- name: Contextual Loss
+  title: The contextual loss for image transformation with non-aligned data
+  venue: ECCV
+  year: 2018
+  paper: https://doi.org/10.1007/978-3-030-01264-9_47
+  code: https://github.com/roimehrez/contextualLoss
+  status: code
+  framework: TensorFlow / PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Each feature is matched to its most similar feature anywhere in the other image instead of the one at the same coordinates.
+- name: CoBi
+  title: Zoom to Learn, Learn to Zoom
+  venue: CVPR
+  year: 2019
+  paper: https://doi.org/10.1109/CVPR.2019.00388
+  code: https://github.com/ceciliavision/zoom-learn-zoom
+  status: code
+  framework: TensorFlow
+  align: shift
+  color: partial
+  output: score
+  tldr: Contextual bilateral loss, contextual matching plus a spatial-distance penalty, applied to RGB patches and VGG features to train on mildly misaligned SR-RAW pairs.
+- name: SIFID
+  title: 'SinGAN: Learning a Generative Model from a Single Natural Image'
+  venue: ICCV
+  year: 2019
+  paper: https://arxiv.org/abs/1905.01164
+  code: https://github.com/tamarott/SinGAN
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Single-image FID, the Fréchet distance between the means and covariances of internal deep features of two images.
+- name: STROTSS
+  title: Style Transfer by Relaxed Optimal Transport and Self-Similarity
+  venue: CVPR
+  year: 2019
+  paper: https://arxiv.org/abs/1904.12785
+  code: https://github.com/nkolkin13/STROTSS
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Relaxed optimal-transport distance between two sets of deep features, used as a style loss; position-free by construction.
+- name: E-LPIPS
+  title: 'E-LPIPS: robust perceptual image similarity via random transformation ensembles'
+  venue: arXiv
+  year: 2019
+  paper: https://arxiv.org/abs/1906.03973
+  code: https://github.com/mkettune/elpips
+  status: code
+  framework: TensorFlow
+  align: pixel
+  color: partial
+  output: score
+  tldr: Averages LPIPS over random transformations (shifts, flips, axis swaps, downscaling, color permutation and scaling, dropout) applied identically to both images, mainly against adversarial attacks.
+  note: Both images get the same transform, so it does not add tolerance to misalignment between them.
+- name: DISTS
+  title: 'Image quality assessment: unifying structure and texture similarity'
+  venue: IEEE TPAMI
+  year: 2022
+  paper: https://doi.org/10.1109/TPAMI.2020.3045810
+  code: https://github.com/dingkeyan93/DISTS
+  status: code
+  impl:
+  - label: pip · `DISTS-pytorch`
+    url: https://pypi.org/project/DISTS-pytorch/
+  - label: pyiqa · `dists`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  framework: PyTorch / TensorFlow
+  align: shift
+  color: partial
+  output: score
+  tldr: Compares spatial means (texture) and correlations (structure) of VGG feature maps; reported relatively insensitive to mild geometric transformations such as translation and dilation.
+- name: Projected Distribution Loss
+  title: Projected distribution loss for image enhancement
+  venue: ICCP
+  year: 2021
+  paper: https://doi.org/10.1109/ICCP51581.2021.9466271
+  code: https://github.com/saurabh-kataria/projected-distribution-loss
+  status: unofficial
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Matches 1-D projections of deep-feature distributions without forcing features to sit at the same spatial positions.
+- name: A-DISTS
+  title: Locally Adaptive Structure and Texture Similarity for Image Quality Assessment
+  venue: ACM MM
+  year: 2021
+  paper: https://doi.org/10.1145/3474085.3475419
+  code: https://github.com/dingkeyan93/A-DISTS
+  status: code
+  framework: PyTorch
+  align: shift
+  color: partial
+  output: score
+  tldr: DISTS with locally adaptive weights between its texture and structure terms, set by a dispersion index of the local content.
+- name: Sliced Wasserstein texture loss
+  title: A sliced Wasserstein loss for neural texture synthesis
+  venue: CVPR
+  year: 2021
+  paper: https://arxiv.org/abs/2006.07229
+  code: https://github.com/tchambon/A-Sliced-Wasserstein-Loss-for-Neural-Texture-Synthesis
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Sliced Wasserstein distance between VGG-19 feature distributions; the deep-feature counterpart of MS-SWD's pixel-patch distributions.
+- name: CVRKD
+  title: Content-Variant Reference Image Quality Assessment via Knowledge Distillation
+  venue: AAAI
+  year: 2022
+  paper: https://doi.org/10.1609/aaai.v36i3.20221
+  code: https://github.com/guanghaoyin/CVRKD-IQA
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Uses a high-quality image with different content as the reference; a student distilled from a full-reference teacher predicts quality from this non-aligned reference.
+- name: DeepWSD
+  title: 'DeepWSD: Projecting Degradations in Perceptual Space to Wasserstein Distance in Deep Feature Space'
+  venue: ACM MM
+  year: 2022
+  paper: https://doi.org/10.1145/3503161.3548193
+  code: https://github.com/Buka-Xing/DeepWSD
+  status: code
+  framework: PyTorch
+  align: shift
+  color: partial
+  output: score
+  tldr: Training-free. 1-D Wasserstein distances between feature distributions in small windows of the image and of each VGG layer.
+  note: Distribution comparison is local; robustness to misalignment is not claimed.
+- name: ST-LPIPS
+  title: Shift-tolerant Perceptual Similarity Metric
+  venue: ECCV
+  year: 2022
+  paper: https://doi.org/10.1007/978-3-031-19797-0_6
+  code: https://github.com/abhijay9/ShiftTolerant-LPIPS
+  status: code
+  impl:
+  - label: pip · `stlpips-pytorch`
+    url: https://pypi.org/project/stlpips-pytorch/
+  - label: pyiqa · `stlpips`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  framework: PyTorch
+  align: shift
+  color: partial
+  output: score
+  tldr: Redesigns the LPIPS backbone (anti-aliasing, pooling, strides, padding) so that imperceptible shifts of a few pixels barely change the score.
+  note: The paper tests 1–3 px horizontal shifts.
+- name: DreamSim
+  title: 'DreamSim: Learning New Dimensions of Human Visual Similarity using Synthetic Data'
+  venue: NeurIPS
+  year: 2023
+  paper: https://arxiv.org/abs/2306.09344
+  code: https://github.com/ssundaram21/dreamsim
+  status: code
+  impl:
+  - label: pip · `dreamsim`
+    url: https://pypi.org/project/dreamsim/
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Concatenated CLIP, OpenCLIP and DINO embeddings fine-tuned on human similarity triplets (NIGHTS); focuses on foreground objects and semantics while staying sensitive to color and layout.
+- name: MIPM
+  title: Misalignment insensitive perceptual metric for full reference image quality assessment
+  venue: PRCV
+  year: 2023
+  paper: https://doi.org/10.1007/978-981-99-8552-4_35
+  status: no-code
+  align: shift
+  color: partial
+  output: score
+  tldr: Wasserstein differences between deep-feature distributions in overlapping local windows (LOWD) with channel attention, aimed at misaligned GAN restoration results.
+- name: DepictQA
+  title: 'Depicting beyond scores: advancing image quality assessment through multi-modal language models'
+  venue: ECCV
+  year: 2024
+  paper: https://doi.org/10.1007/978-3-031-72970-6_15
+  code: https://github.com/XPixelGroup/DepictQA
+  status: code
+  framework: PyTorch
+  align: shift
+  color: partial
+  output: text
+  tldr: A multimodal LLM compares a reference with two test images in language; the authors note that score-based metrics disagree with people when images are misaligned.
+- name: DOSS
+  title: 'Full-Reference Image Quality Assessment: Addressing Content Misalignment Issue by Comparing Order Statistics of Deep Features'
+  venue: IEEE TBC
+  year: 2024
+  paper: https://doi.org/10.1109/tbc.2023.3294835
+  code: https://github.com/Buka-Xing/DOSS
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Sorts deep features before comparing them, so the order statistics no longer depend on where content sits.
+- name: GRIDS
+  title: Graph-represented distribution similarity index for full-reference image quality assessment
+  venue: IEEE TIP
+  year: 2024
+  paper: https://doi.org/10.1109/tip.2024.3390565
+  code: https://github.com/Land5cape/GRIDS
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Represents deep features as graphs and compares their distributions.
+  note: Model weights on Baidu (code tmtj).
+- name: DeepDC
+  title: 'DeepDC: deep distance correlation as a perceptual image quality evaluator'
+  venue: IEEE TIP
+  year: 2025
+  paper: https://doi.org/10.1109/TIP.2025.3635025
+  code: https://github.com/h4nwei/DeepDC
+  status: code
+  impl:
+  - label: pip · `DeepDC-PyTorch`
+    url: https://pypi.org/project/DeepDC-PyTorch/
+  - label: pyiqa · `deepdc`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Distance correlation between deep feature channels treated as observations; does not require point-by-point alignment and is evaluated on a geometric-transformation set.
+- name: Puzzle Similarity
+  title: 'Puzzle Similarity: a perceptually-guided cross-reference metric for artifact detection in 3D scene reconstructions'
+  venue: ICCV
+  year: 2025
+  paper: https://doi.org/10.1109/ICCV51701.2025.02682
+  code: https://github.com/nihermann/PuzzleSim
+  status: code
+  impl:
+  - label: pip · `puzzle_sim`
+    url: https://github.com/nihermann/PuzzleSim
+  framework: PyTorch
+  align: free
+  color: partial
+  output: map
+  tldr: Builds a patch-feature distribution from training views and localizes artifacts in novel views without an aligned reference.
+- name: DeepSSIM
+  title: 'Structural similarity in deep features: unified image quality assessment robust to geometrically disparate reference'
+  venue: IEEE TPAMI
+  year: 2026
+  paper: https://doi.org/10.1109/TPAMI.2025.3627285
+  code: https://github.com/kekezhang112/DeepSSIM
+  status: code
+  framework: MATLAB / PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: SSIM-style comparison of Gram matrices of VGG16 conv5_1 features; summing over positions discards location, which handles super-resolution and retargeting references.
+  note: The paper does not discuss color; an informal test with substitute VGG weights found it responsive to tone changes but weak on white-balance casts. DeepSSIM-Lite (PyTorch) is for optimization.
+- name: MIIDP
+  title: Misalignment-tolerant perceptual similarity metric for full reference image dehazing quality assessment
+  venue: Expert Syst Appl
+  year: 2026
+  paper: https://doi.org/10.1016/j.eswa.2025.130385
+  code: https://github.com/CVhnu/MIIDP
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Replaces continuous CNN features with a discrete VQ codebook representation that does not depend on position, for dehazing results that are misaligned with the reference.
+- name: MSDS
+  title: 'MSDS: deep structural similarity with multiscale representation'
+  venue: IEEE SPL
+  year: 2026
+  paper: https://doi.org/10.1109/LSP.2026.3726843
+  status: no-code
+  align: free
+  color: partial
+  output: score
+  tldr: Computes DeepSSIM on every pyramid level and fuses the scores with a few learned global weights; consistent gains over single-scale DeepSSIM.
+- name: MRFEM-KL
+  title: Image quality assessment using multi-branch residual feature enhancement and adaptive distribution metric
+  venue: Digit Signal Process
+  year: 2026
+  paper: https://doi.org/10.1016/j.dsp.2026.106028
+  status: no-code
+  align: shift
+  color: partial
+  output: score
+  tldr: Adds a multi-branch residual enhancement module to VGG19 and compares feature distributions in sliding windows with KL divergence plus cosine distance.
+  note: Cites MS-SWD but targets overall quality; tolerance to misalignment is not stated.

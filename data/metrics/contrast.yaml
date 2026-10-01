@@ -1,0 +1,127 @@
+# contrast: one entry per metric; see CONTRIBUTING.md for the schema
+- name: Peli band-limited contrast
+  title: Contrast in complex images
+  venue: JOSA A
+  year: 1990
+  paper: https://doi.org/10.1364/JOSAA.7.002032
+  status: no-code
+  align: free
+  color: luminance
+  output: map
+  tldr: Local band-limited contrast per pixel and per octave band (band-pass image divided by the low-pass image one octave below); also discusses RMS contrast.
+  note: The contrast maps need alignment to be compared pixel by pixel; comparing their distributions per band does not (see the guide).
+- name: Perceived contrast
+  title: Perceived contrast in complex images
+  venue: J Vision
+  year: 2013
+  paper: https://doi.org/10.1167/13.13.3
+  status: no-code
+  align: free
+  color: luminance
+  output: score
+  tldr: Classification-image study of which spatial frequencies drive perceived contrast of photos (mainly 1–6 cycles/degree); a CSF alone is not enough, gain control toward low frequencies is needed.
+- name: MS-SSIM
+  title: Multiscale structural similarity for image quality assessment
+  venue: Asilomar
+  year: 2003
+  paper: https://doi.org/10.1109/ACSSC.2003.1292216
+  status: toolbox
+  impl:
+  - label: pyiqa · `ms_ssim`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  - label: piq · `multi_scale_ssim`
+    url: https://github.com/photosynthesis-team/piq
+  align: pixel
+  color: luminance
+  output: score
+  tldr: SSIM contrast and structure terms evaluated over a dyadic pyramid, luminance term only at the coarsest scale, with psychophysically fitted scale weights.
+- name: SSIM
+  title: 'Image quality assessment: from error visibility to structural similarity'
+  venue: IEEE TIP
+  year: 2004
+  paper: https://doi.org/10.1109/TIP.2003.819861
+  status: toolbox
+  impl:
+  - label: scikit-image · `structural_similarity`
+    url: https://github.com/scikit-image/scikit-image
+  - label: pyiqa · `ssim` / `ssimc`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  align: pixel
+  color: partial
+  output: map
+  tldr: Local luminance, contrast and structure comparison. The contrast term c = 2σxσy/(σx²+σy²) is symmetric and compressed, so it cannot tell a contrast increase from a decrease.
+  note: Local normalization removes global photometric changes, so SSIM barely reacts to color casts (see the guide).
+- name: DRIM
+  title: Dynamic range independent image quality assessment
+  venue: ACM TOG (SIGGRAPH)
+  year: 2008
+  paper: https://doi.org/10.1145/1360612.1360668
+  status: no-code
+  align: pixel
+  color: luminance
+  output: map
+  tldr: Reports three probability maps, loss of visible contrast, amplification of invisible contrast and contrast reversal, between images of different dynamic range.
+  note: Insensitive to mild tone-curve changes by design; it reports changes in visibility, not in contrast magnitude.
+- name: TMQI
+  title: Objective quality assessment of tone-mapped images
+  venue: IEEE TIP
+  year: 2013
+  paper: https://doi.org/10.1109/TIP.2012.2221725
+  code: https://eceweb.uwaterloo.ca/~z70wang/research/tmqi/
+  status: code
+  framework: MATLAB
+  align: pixel
+  color: luminance
+  output: score
+  tldr: Multi-scale structural fidelity against the HDR reference plus a statistical naturalness term for tone-mapped LDR images, computed on luminance only.
+- name: GMSD
+  title: 'Gradient magnitude similarity deviation: a highly efficient perceptual image quality index'
+  venue: IEEE TIP
+  year: 2014
+  paper: https://doi.org/10.1109/TIP.2013.2293423
+  status: toolbox
+  impl:
+  - label: pyiqa · `gmsd`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  - label: piq · `gmsd`
+    url: https://github.com/photosynthesis-team/piq
+  align: pixel
+  color: luminance
+  output: score
+  tldr: Per-pixel similarity of Prewitt gradient magnitudes on luminance, pooled by its standard deviation into one score.
+- name: TMQI-II
+  title: High Dynamic Range Image Compression by Optimizing Tone Mapped Image Quality Index
+  venue: IEEE TIP
+  year: 2015
+  paper: https://doi.org/10.1109/TIP.2015.2436340
+  status: no-code
+  align: pixel
+  color: luminance
+  output: score
+  tldr: Revises the structural-fidelity and naturalness terms of TMQI and uses the improved index as an objective for tone-mapping optimization.
+- name: castleCSF
+  title: castleCSF — a contrast sensitivity function of color, area, spatiotemporal frequency, luminance and eccentricity
+  venue: J Vision
+  year: 2024
+  paper: https://doi.org/10.1167/jov.24.4.5
+  code: https://github.com/gfxdisp/castleCSF
+  status: code
+  framework: MATLAB
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Analytic CSF fitted to 18 data sets, covering spatial / temporal frequency, any color direction, luminance, background chromaticity, eccentricity and area; the sensitivity model inside ColorVideoVDP.
+  note: Not an image metric on its own; it predicts whether a small chromatic or achromatic contrast is visible. Data are in the repository.
+- name: TM metric adaptation
+  title: Adapting Quality Metrics to Tone Mapping
+  venue: SIGGRAPH
+  year: 2026
+  paper: https://doi.org/10.1145/3799902.3811107
+  code: https://github.com/NYU-ICL/TM-metric-adaptation
+  status: code
+  framework: PyTorch
+  align: pixel
+  color: chromatic
+  output: score
+  tldr: Converts HDR reference and tone-mapped SDR test to photometric values with a display model and re-encodes both with a perceptual transfer function, so general metrics beat tone-mapping-specific ones; introduces ColorVideoVDP-tm.
+  note: 'Data: TMQ-ME (doi:10.17863/CAM.129808). Project page: kenchen10.github.io/projects/tmometric.'

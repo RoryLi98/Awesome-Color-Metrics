@@ -1,0 +1,29 @@
+name: Link check
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'   # Mondays 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --config lychee.toml README.md CODE.md CONTRIBUTING.md guide/color-metrics-101.md
+          fail: false
+      - name: Open an issue with the report
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Weekly link check report
+          content-filepath: ./lychee/out.md
+          labels: broken-link

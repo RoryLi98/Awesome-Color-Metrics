@@ -1,0 +1,64 @@
+# Learning material and related lists.
+tutorials:
+  - name: Color Metrics 101 (this repository)
+    by: guide/color-metrics-101.md
+    url: guide/color-metrics-101.md
+    description: ΔE and its decomposition, aligned vs misaligned measurement, average-then-compare, the cast-vs-shift sanity check and what to report.
+  - name: CIEDE2000 implementation notes and test data
+    by: Gaurav Sharma (University of Rochester)
+    url: https://hajim.rochester.edu/ece/sites/gsharma/ciede2000/
+    description: MATLAB and Excel code with the test pairs that catch common implementation mistakes.
+  - name: ColorVideoVDP project page
+    by: Rafał Mantiuk's group (Cambridge)
+    url: https://www.cl.cam.ac.uk/research/rainbow/projects/colorvideovdp/
+    description: Explains display models, JOD units and distortion maps for visible-difference prediction.
+  - name: Using Colorcheck
+    by: Imatest documentation
+    url: https://docs.imatest.com/docs/colorcheck
+    description: Practical chart-based color accuracy, ΔE vs ΔC, exposure and saturation pitfalls.
+  - name: Understanding the In-Camera Rendering Pipeline and the Role of AI/Deep Learning
+    by: Michael S. Brown (ICCV 2023 tutorial)
+    url: http://www.eecs.yorku.ca/~mbrown/ICCV2023_Brown.html
+    description: Color science of the camera pipeline, the background for what ISP color metrics measure.
+
+books:
+  - name: Color Appearance Models, 3rd ed.
+    by: Mark D. Fairchild (Wiley, 2013)
+    url: https://doi.org/10.1002/9781118653128
+    description: Color appearance phenomena, CIECAM02 and the models behind modern uniform spaces.
+  - name: Measuring Colour, 4th ed.
+    by: R. W. G. Hunt and M. R. Pointer (Wiley, 2011)
+    url: https://doi.org/10.1002/9781119975595
+    description: Colorimetry, color-difference formulas and their practical use.
+  - name: Digital Color Imaging Handbook
+    by: Gaurav Sharma (ed.), CRC Press
+    url: https://doi.org/10.1201/9781420041484
+    description: Color science for imaging systems, including color difference and device characterization.
+  - name: Handbook of Image Quality
+    by: Brian W. Keelan (CRC Press, 2002)
+    url: https://doi.org/10.1201/9780203910825
+    description: Quality rulers, JND scales and the perceptual calibration behind CPIQ-style metrics.
+  - name: Modern Image Quality Assessment
+    by: Zhou Wang and Alan C. Bovik (2006)
+    url: https://doi.org/10.1007/978-3-031-02238-8
+    description: Short monograph on full-reference IQA, from error visibility to structural similarity.
+
+related_lists:
+  - name: chaofengc/Awesome-Image-Quality-Assessment
+    url: https://github.com/chaofengc/Awesome-Image-Quality-Assessment
+    description: The main IQA paper list; its "Color IQA" subsection has MS-SWD and CD-Flow.
+  - name: colour-science/awesome-colour
+    url: https://github.com/colour-science/awesome-colour
+    description: General color science resources (libraries, books, articles).
+  - name: RoryLi98/Awesome-Neural-ISP
+    url: https://github.com/RoryLi98/Awesome-Neural-ISP
+    description: Neural camera ISPs with code and weights; the white-balance and color section is where these metrics are used.
+  - name: iamsiddhantsahu/awesome-color-constancy
+    url: https://github.com/iamsiddhantsahu/awesome-color-constancy
+    description: Color constancy and illuminant estimation papers (not updated since 2020).
+  - name: shreshthsaini/Awesome-Perceptual-Quality
+    url: https://github.com/shreshthsaini/Awesome-Perceptual-Quality
+    description: Tagged catalog of image / video / HDR quality methods and subjective data sets.
+  - name: Papers using FLIP
+    url: https://github.com/NVlabs/flip/blob/main/misc/papersUsingFLIP.md
+    description: NVIDIA's list of papers that use or cite FLIP.

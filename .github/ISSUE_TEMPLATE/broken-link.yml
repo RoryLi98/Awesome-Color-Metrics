@@ -1,0 +1,22 @@
+name: Report a broken link or wrong label
+description: A paper or code link no longer works, code has been released, or an alignment / color label is wrong.
+title: '[Fix] '
+labels: [fix]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry name
+      placeholder: MS-SWD
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Correct link or label (with a source, if possible)

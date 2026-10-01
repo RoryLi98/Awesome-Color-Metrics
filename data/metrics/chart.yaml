@@ -1,0 +1,183 @@
+# chart: one entry per metric or standard; see CONTRIBUTING.md for the schema
+- name: ColorChecker ΔE
+  title: A color-rendition chart
+  venue: J Appl Photogr Eng
+  year: 1976
+  paper: https://www.babelcolor.com/colorchecker-2.htm
+  status: toolbox
+  impl:
+  - label: colour-checker-detection
+    url: https://github.com/colour-science/colour-checker-detection
+  - label: OpenCV contrib · `mcc`
+    url: https://github.com/opencv/opencv_contrib/tree/4.x/modules/mcc
+  align: chart
+  color: dedicated
+  output: components
+  tldr: Mean and maximum ΔE00 over the 24 patches, plus ΔC00 (no lightness), saturation ratio and gray-patch white-balance error; patch centers only.
+  note: 'Paper: McCamy, Marcus and Davidson, J Appl Photogr Eng 2(3):95–99. The link gives reference data; the pigments changed in Nov 2014 (mean ΔE00 0.85 between versions), so match your chart.'
+- name: ISO 17321-1
+  title: 'ISO 17321-1:2012 Graphic technology and photography — Colour characterisation of digital still cameras (DSCs) — Part 1: Stimuli, metrology and test procedures'
+  venue: ISO
+  year: 2012
+  paper: https://www.iso.org/standard/56537.html
+  status: spec
+  impl:
+  - label: colour · `colour.characterisation`
+    url: https://github.com/colour-science/colour
+  align: chart
+  color: dedicated
+  output: params
+  tldr: Stimuli, measurements and procedures for characterizing a camera's color response, i.e. fitting the camera-RGB-to-XYZ transform from targets.
+- name: Root-polynomial color correction
+  title: Color correction using root-polynomial regression
+  venue: IEEE TIP
+  year: 2015
+  paper: https://doi.org/10.1109/TIP.2015.2405336
+  status: toolbox
+  impl:
+  - label: colour · `polynomial_expansion_Finlayson2015`
+    url: https://github.com/colour-science/colour
+  align: chart
+  color: dedicated
+  output: params
+  tldr: Polynomial camera-to-XYZ regression on k-th roots of RGB products, which keeps the fit invariant to exposure scaling.
+  note: The same model can fit the color mapping between two images from region means, giving interpretable parameters plus a residual.
+- name: ISO 14524 OECF
+  title: ISO 14524:2009 Photography — Electronic still-picture cameras — Methods for measuring opto-electronic conversion functions (OECFs)
+  venue: ISO
+  year: 2009
+  paper: https://www.iso.org/standard/43527.html
+  status: spec
+  align: chart
+  color: luminance
+  output: params
+  tldr: Measures the tone curve (opto-electronic conversion function) from a gray-scale chart, i.e. the camera's contrast transfer from scene luminance to output values.
+- name: ISO 15739 noise
+  title: ISO 15739:2023 Photography — Electronic still-picture imaging — Noise measurements
+  venue: ISO
+  year: 2023
+  paper: https://www.iso.org/standard/82233.html
+  status: spec
+  align: chart
+  color: chromatic
+  output: components
+  tldr: Signal-to-noise ratio, visual noise (opponent space with per-channel CSF weighting) and noise-limited dynamic range from uniform patches.
+- name: Visual noise metric
+  title: Development of a perceptually calibrated objective metric of noise
+  venue: Proc SPIE
+  year: 2011
+  paper: https://doi.org/10.1117/12.871633
+  status: no-code
+  align: chart
+  color: chromatic
+  output: score
+  tldr: Objective noise metric calibrated in just-noticeable differences with a softcopy quality-ruler experiment on simulated phone noise.
+- name: CPIQ spatial metrics
+  title: Development of the I3A CPIQ spatial metrics
+  venue: Proc SPIE
+  year: 2012
+  paper: https://doi.org/10.1117/12.905752
+  status: no-code
+  align: chart
+  color: chromatic
+  output: score
+  tldr: How the CPIQ edge acutance, texture acutance and visual noise metrics were built from opponent-space CSF weighting and display / print MTFs.
+- name: IEEE 1858 CPIQ
+  title: IEEE 1858-2023 Standard for Camera Phone Image Quality (CPIQ)
+  venue: IEEE Std
+  year: 2023
+  paper: https://standards.ieee.org/ieee/1858/6931/
+  status: spec
+  align: chart
+  color: chromatic
+  output: components
+  tldr: Phone camera metrics (spatial frequency response, color uniformity, chroma level, lateral chromatic displacement, distortion, texture blur, visual noise), each converted to JND of quality loss.
+  note: DOI 10.1109/IEEESTD.2023.10205967; supersedes IEEE 1858-2016.
+- name: ISO 17957 shading
+  title: ISO 17957:2015 Photography — Digital cameras — Shading measurements
+  venue: ISO
+  year: 2015
+  paper: https://www.iso.org/standard/31974.html
+  status: spec
+  align: chart
+  color: chromatic
+  output: map
+  tldr: Luminance and color shading (non-uniformity across the field) measured on a uniform target.
+- name: Mahalanobis color separation
+  title: Mahalanobis distance as a robust color (signal) separation metric
+  venue: IS&T EI
+  year: 2026
+  paper: https://doi.org/10.2352/ei.2026.38.16.avm-112
+  status: no-code
+  align: chart
+  color: chromatic
+  output: score
+  tldr: Noise-referenced separability of two color patches using the pooled noise covariance; invariant to white balance, CCM and other linear steps, unlike ΔE2000 or Δa*b*.
+- name: ISO 12233 SFR
+  title: ISO 12233:2024 Digital cameras — Resolution and spatial frequency responses
+  venue: ISO
+  year: 2024
+  paper: https://www.iso.org/standard/88626.html
+  status: spec
+  impl:
+  - label: sfrmat (MATLAB, BSD)
+    url: https://burnsdigitalimaging.com/software/sfrmat/
+  - label: MTF Mapper (C++, BSD)
+    url: https://sourceforge.net/projects/mtfmapper/
+  align: chart
+  color: luminance
+  output: components
+  tldr: Slanted-edge SFR (contrast transfer vs spatial frequency) with 4× oversampled edge profiles; the edge position is fitted from the data, so ROI shifts do not matter.
+  note: 'Algorithm background: Burns, PICS 2000; edition-4 update (polynomial edge fit, Tukey window): Burns et al., IS&T EI 2022 (doi:10.2352/ei.2022.34.9.iqsp-357).'
+- name: ISO/TS 19567-2 dead leaves
+  title: 'ISO/TS 19567-2:2019 Photography — Digital cameras — Texture reproduction measurements — Part 2: Texture analysis using stochastic pattern'
+  venue: ISO/TS
+  year: 2019
+  paper: https://www.iso.org/standard/70955.html
+  status: spec
+  align: chart
+  color: luminance
+  output: components
+  tldr: Texture MTF from a dead-leaves (random occluding disks) chart, which exposes adaptive noise reduction that a slanted edge misses.
+- name: Dead leaves texture MTF
+  title: Dead leaves model for measuring texture quality on a digital camera
+  venue: Proc SPIE
+  year: 2010
+  paper: https://doi.org/10.1117/12.838902
+  status: no-code
+  align: chart
+  color: luminance
+  output: components
+  tldr: Texture MTF as the square root of the ratio of output to chart power spectra on a scale-invariant dead-leaves pattern; power spectra ignore phase, so position does not matter.
+  note: 'Earlier version: Cao, Guichard and Hornung, Proc SPIE 7250, 2009 (doi:10.1117/12.805853).'
+- name: Noise-corrected dead leaves
+  title: 'Texture-based measurement of spatial frequency response using the dead leaves target: extensions, and application to real camera systems'
+  venue: Proc SPIE
+  year: 2010
+  paper: https://doi.org/10.1117/12.838698
+  status: no-code
+  align: chart
+  color: luminance
+  output: components
+  tldr: Subtracts the noise power measured on uniform patches from the output spectrum before forming the texture MTF.
+  note: Assumes noise on gray patches equals noise on texture, which adaptive noise reduction breaks.
+- name: Intrinsic dead leaves
+  title: 'Description of texture loss using the dead leaves target: current issues and a new intrinsic approach'
+  venue: Proc SPIE
+  year: 2014
+  paper: https://doi.org/10.1117/12.2039689
+  status: no-code
+  align: pixel
+  color: luminance
+  output: components
+  tldr: Cross-spectrum between the captured image and the known chart pattern; robust to noise and recovers phase, but the reference must be registered exactly.
+- name: Dead leaves misregistration
+  title: The effects of misregistration on the dead leaves cross-correlation texture blur analysis
+  venue: IS&T EI
+  year: 2017
+  paper: https://doi.org/10.2352/issn.2470-1173.2017.12.iqsp-257
+  status: no-code
+  align: pixel
+  color: luminance
+  output: components
+  tldr: Shows that misregistration as small as 0.15 px makes the real part of the cross-correlation MTF fluctuate strongly, and recommends the magnitude of the transfer function instead.

@@ -1,0 +1,49 @@
+# patch: one entry per metric; see CONTRIBUTING.md for the schema
+- name: Bidirectional similarity (BDS)
+  title: Summarizing visual data using bidirectional similarity
+  venue: CVPR
+  year: 2008
+  paper: https://doi.org/10.1109/CVPR.2008.4587842
+  status: no-code
+  align: free
+  color: chromatic
+  output: score
+  tldr: Every patch of each image must have a close match somewhere in the other (completeness and coherence); a standard measure in image retargeting.
+  note: The nearest-neighbor search also absorbs genuine color differences, so its resolution for color casts is modest.
+- name: CW-SSIM
+  title: 'Complex wavelet structural similarity: a new image similarity index'
+  venue: IEEE TIP
+  year: 2009
+  paper: https://doi.org/10.1109/TIP.2009.2025923
+  status: toolbox
+  impl:
+  - label: pyiqa · `cw_ssim`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  align: shift
+  color: luminance
+  output: score
+  tldr: SSIM on complex steerable-pyramid coefficients, where a small translation only rotates the phase; tolerant to shifts that are small relative to the filter size.
+  note: Blind to color casts, which makes it look robust in shift tests for the wrong reason (see the guide).
+- name: STSIM
+  title: Structural texture similarity metrics for image analysis and retrieval
+  venue: IEEE TIP
+  year: 2013
+  paper: https://doi.org/10.1109/tip.2013.2251645
+  status: no-code
+  align: free
+  color: luminance
+  output: score
+  tldr: Compares a small set of steerable-subband statistics globally or in sliding windows, explicitly allowing large point-by-point deviations between textures.
+- name: GPDM
+  title: Generating natural images with direct patch distributions matching
+  venue: ECCV
+  year: 2022
+  paper: https://arxiv.org/abs/2203.11862
+  code: https://github.com/ariel415el/GPDM
+  status: code
+  framework: PyTorch
+  align: free
+  color: chromatic
+  output: score
+  tldr: A generative method whose loss is the sliced Wasserstein distance between multi-scale RGB patch distributions; usable as a position-free image distance.
+  note: MS-SWD reuses parts of its code; the main differences are CIELAB vs RGB, patch size and number of scales.

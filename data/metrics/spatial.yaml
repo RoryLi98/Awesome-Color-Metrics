@@ -1,0 +1,139 @@
+# spatial: one entry per metric; see CONTRIBUTING.md for the schema
+- name: S-CIELAB
+  title: A spatial extension of CIELAB for digital color-image reproduction
+  venue: J Soc Inf Display
+  year: 1997
+  paper: https://doi.org/10.1889/1.1985127
+  code: https://github.com/wandell/SCIELAB-1996
+  status: code
+  framework: MATLAB
+  align: pixel
+  color: dedicated
+  output: map
+  tldr: Converts to an opponent space, blurs each channel with its own contrast-sensitivity filter, converts back and computes per-pixel ΔE; needs viewing distance in pixels per degree.
+  note: The low-pass filters do not make it tolerant to misalignment (see the guide).
+- name: CID
+  title: 'Image-difference prediction: from grayscale to color'
+  venue: IEEE TIP
+  year: 2013
+  paper: https://doi.org/10.1109/TIP.2012.2216279
+  status: no-code
+  align: pixel
+  color: dedicated
+  output: components
+  tldr: Normalize, extract lightness / chroma / hue / structure features, combine into an image-difference score with interpretable terms; tuned on gamut-mapped images.
+- name: iCID
+  title: 'Color-image quality assessment: from prediction to optimization'
+  venue: IEEE TIP
+  year: 2014
+  paper: https://doi.org/10.1109/TIP.2014.2302684
+  status: no-code
+  align: pixel
+  color: dedicated
+  output: components
+  tldr: Improved CID that can be used as an optimization target for gamut mapping without artifacts, while predicting subjective data better than CID.
+- name: MS-iCID
+  title: Evaluating the multi-scale iCID metric
+  venue: Proc SPIE
+  year: 2015
+  paper: https://doi.org/10.1117/12.2078879
+  status: no-code
+  align: pixel
+  color: dedicated
+  output: score
+  tldr: Multi-scale version of iCID evaluated against subjective image-difference data.
+- name: FLIP
+  title: 'FLIP: a difference evaluator for alternating images'
+  venue: ACM PACMCGIT
+  year: 2020
+  paper: https://doi.org/10.1145/3406183
+  code: https://github.com/NVlabs/flip
+  status: code
+  impl:
+  - label: pip · `flip-evaluator`
+    url: https://pypi.org/project/flip-evaluator/
+  framework: Python / C++ / CUDA
+  align: pixel
+  color: dedicated
+  output: map
+  tldr: Error map approximating what a viewer sees when flipping between two images; CSF-filtered HyAB color pipeline combined with an edge / point feature pipeline.
+- name: HDR-FLIP
+  title: Visualizing Errors in Rendered High Dynamic Range Images
+  venue: Eurographics (short)
+  year: 2021
+  paper: https://doi.org/10.2312/egs.20211015
+  code: https://github.com/NVlabs/flip
+  status: code
+  framework: Python / C++ / CUDA
+  align: pixel
+  color: dedicated
+  output: map
+  tldr: Extends FLIP to HDR images by tone mapping over a range of exposures and taking the maximum LDR-FLIP error per pixel.
+  note: Shipped in the same repository as FLIP.
+- name: HDR-VDP-2
+  title: 'HDR-VDP-2: a calibrated visual metric for visibility and quality predictions in all luminance conditions'
+  venue: ACM TOG
+  year: 2011
+  paper: https://doi.org/10.1145/2010324.1964935
+  code: https://sourceforge.net/projects/hdrvdp/
+  status: code
+  framework: MATLAB
+  align: pixel
+  color: luminance
+  output: map
+  tldr: Visual model of optics, photoreceptors, contrast sensitivity and masking that predicts visibility maps and quality for any luminance range, from absolute photometric input.
+  note: Achromatic visual model; ColorVideoVDP is the color successor.
+- name: HDR-VDP-3
+  title: 'HDR-VDP-3: a multi-metric for predicting image differences, quality and contrast distortions in high dynamic range and regular content'
+  venue: arXiv
+  year: 2023
+  paper: https://arxiv.org/abs/2304.13625
+  code: https://sourceforge.net/projects/hdrvdp/
+  status: code
+  framework: MATLAB / Octave
+  align: pixel
+  color: luminance
+  output: map
+  tldr: Three tasks in one model, quality in JOD, visible-difference probability maps and contrast-distortion (loss / enhancement) maps, from display-calibrated input.
+  note: Achromatic. Current release HDR-VDP-3.0.7 (GPLv2).
+- name: ColorVideoVDP
+  title: 'ColorVideoVDP: a visual difference predictor for image, video and display distortions'
+  venue: ACM TOG (SIGGRAPH)
+  year: 2024
+  paper: https://doi.org/10.1145/3658144
+  code: https://github.com/gfxdisp/ColorVideoVDP
+  status: code
+  impl:
+  - label: pip · `cvvdp`
+    url: https://pypi.org/project/cvvdp/
+  framework: PyTorch
+  align: pixel
+  color: dedicated
+  output: map
+  tldr: Full-reference metric built on a chromatic spatio-temporal CSF (castleCSF) and cross-channel masking; outputs a JOD score and per-pixel distortion maps for a given display.
+  note: A 1 px shift is a visible difference to this model, so it is not meant for misaligned pairs (see the guide).
+- name: ColorVideoVDP-ML
+  title: 'ColorVideoVDP-ML: visual difference predictor with a neural regressor for image and video quality prediction'
+  venue: ICMEW
+  year: 2025
+  paper: https://doi.org/10.1109/ICMEW68306.2025.11152234
+  code: https://github.com/gfxdisp/ColorVideoVDP
+  status: code
+  framework: PyTorch
+  align: pixel
+  color: dedicated
+  output: score
+  tldr: Replaces the hand-designed pooling of ColorVideoVDP with a neural regressor for image and video quality prediction.
+  note: Available in the ColorVideoVDP repository as `cvvdp-ml-saliency` and `cvvdp-ml-transformer`.
+- name: CD-IQA (Temel 2014)
+  title: Image quality assessment and color difference
+  venue: GlobalSIP
+  year: 2014
+  paper: https://doi.org/10.1109/GlobalSIP.2014.7032265
+  code: https://github.com/olivesgatech/Color-Difference-for-IQA
+  status: code
+  framework: MATLAB
+  align: pixel
+  color: dedicated
+  output: score
+  tldr: Studies how per-pixel color-difference equations perform as full-reference quality estimators and how to pool them.

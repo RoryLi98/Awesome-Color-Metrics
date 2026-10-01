@@ -1,0 +1,57 @@
+# wb: one entry per metric; see CONTRIBUTING.md for the schema
+- name: Recovery angular error
+  title: Reevaluation of color constancy algorithm performance
+  venue: JOSA A
+  year: 2006
+  paper: https://doi.org/10.1364/JOSAA.23.001008
+  status: toolbox
+  impl:
+  - label: this repo · guide/shift_vs_cast.py
+    url: guide/shift_vs_cast.py
+  align: free
+  color: dedicated
+  output: score
+  tldr: Angle between estimated and true illuminant RGB vectors, independent of intensity; argues for summarizing errors by the median rather than the mean and for statistical tests when comparing algorithms.
+  note: Per-pixel RGB angles between two images are unstable in dark regions; compare region or image means instead.
+- name: Perceptual illuminant distances
+  title: Perceptual analysis of distance measures for color constancy algorithms
+  venue: JOSA A
+  year: 2009
+  paper: https://doi.org/10.1364/JOSAA.26.002243
+  status: no-code
+  align: free
+  color: dedicated
+  output: score
+  tldr: Psychophysical test of how well distance measures between estimated and true illuminants, angular error among them, predict observers' judgments of the corrected images.
+- name: Reproduction angular error
+  title: The reproduction angular error for evaluating the performance of illuminant estimation algorithms
+  venue: IEEE TPAMI
+  year: 2017
+  paper: https://doi.org/10.1109/TPAMI.2016.2582171
+  status: no-code
+  align: free
+  color: dedicated
+  output: score
+  tldr: Angle between the white surface as reproduced with the estimated illuminant and true achromatic white, which tracks the visible error in the corrected image rather than in the illuminant.
+  note: First proposed at BMVC 2014 (doi:10.5244/C.28.70).
+- name: MIS acceptability
+  title: Testing the acceptability prediction of color difference models using the Multiple Illumination Scenarios (MIS) dataset
+  venue: CIC
+  year: 2025
+  paper: https://doi.org/10.2352/cic.2025.33.1.6
+  status: no-code
+  align: free
+  color: dedicated
+  output: score
+  tldr: 3,465 acceptability ratings of white-balance shifts in single- and multi-illuminant scenes; dark and low-chroma regions are more sensitive, motivating two corrections to color-difference formulas.
+- name: Beyond angular error
+  title: 'Beyond angular error: rethinking metric for white balance and its effect on image color appearance'
+  venue: Color Res Appl
+  year: 2026
+  paper: https://doi.org/10.1002/col.70084
+  status: no-code
+  align: free
+  color: dedicated
+  output: components
+  tldr: Splits the illuminant error in the camera (R/G, B/G) plane into components along and perpendicular to the Planckian locus and weights the perpendicular one more, matching color-appearance error better than angular error.
+  note: Evidence comes from ColorChecker CIELAB ΔE, not a psychophysical experiment.

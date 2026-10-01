@@ -1,0 +1,62 @@
+name: Add a metric
+description: Suggest a metric, protocol, study, dataset or implementation that the list is missing.
+title: '[Metric] '
+labels: [new-metric]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Paper title
+    validations:
+      required: true
+  - type: input
+    id: paper
+    attributes:
+      label: Paper link
+      description: DOI, CVF / ECVA / publisher page, or the arXiv abstract page.
+    validations:
+      required: true
+  - type: input
+    id: venue
+    attributes:
+      label: Venue and year
+      placeholder: ECCV 2024
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      options:
+        - Color-difference formulas & uniform color spaces
+        - Spatial & visibility-based color difference
+        - Color-aware full-reference IQA
+        - Contrast, tone & dynamic range
+        - Perceptual color difference of photographs
+        - Global statistics & color histograms
+        - Patch distributions & shift-tolerant structure
+        - Deep-feature metrics robust to misalignment
+        - Evaluation protocols for misaligned ground truth
+        - White balance & illuminant error
+        - Test charts & camera standards
+        - Benchmarks, psychophysics & surveys
+        - Dataset / tool / learning resource
+    validations:
+      required: true
+  - type: dropdown
+    id: align
+    attributes:
+      label: Alignment requirement
+      options:
+        - pixel (needs pixel alignment)
+        - shift (tolerates small shifts)
+        - free (alignment-free)
+        - chart (known target)
+        - pair (per color pair)
+        - not sure
+  - type: input
+    id: code
+    attributes:
+      label: Official code or toolbox implementation
+  - type: textarea
+    id: tldr
+    attributes:
+      label: One-sentence summary (optional)

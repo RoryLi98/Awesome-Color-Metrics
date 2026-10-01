@@ -1,0 +1,89 @@
+# study: one entry per paper; `align` and `color` are optional in this section
+- name: Histogram distance benchmark
+  title: Empirical evaluation of dissimilarity measures for color and texture
+  venue: ICCV
+  year: 1999
+  paper: https://doi.org/10.1109/iccv.1999.790412
+  status: no-code
+  tldr: Large-scale comparison of nine distribution dissimilarity measures (χ², Kolmogorov-Smirnov, EMD, quadratic form, intersection, ...) for color and texture classification, retrieval and segmentation.
+- name: STRESS
+  title: Measurement of the relationship between perceived and computed color differences
+  venue: JOSA A
+  year: 2007
+  paper: https://doi.org/10.1364/JOSAA.24.001823
+  status: toolbox
+  impl:
+  - label: colour · `index_stress`
+    url: https://github.com/colour-science/colour
+  tldr: The STRESS index (0 is perfect) for testing a color-difference formula against visual data, with a statistical test for whether two formulas differ significantly.
+- name: RetargetMe
+  title: A comparative study of image retargeting
+  venue: ACM TOG (SIGGRAPH Asia)
+  year: 2010
+  paper: https://doi.org/10.1145/1882261.1866186
+  status: no-code
+  tldr: User study of retargeting methods and of metrics that compare images with very different geometry; EMD and SIFT-flow rankings agree best with users, ahead of BDS and edge histograms.
+- name: ΔE survey
+  title: Color difference ΔE - A survey
+  venue: Mach Graph Vis
+  year: 2011
+  paper: https://mgv.sggw.edu.pl/mgv20
+  status: no-code
+  tldr: Review of perceptually uniform color spaces and ΔE formulas up to CIEDE2000, discussing when two colors should be judged similar or distinct.
+- name: MLLM IQA study
+  title: A comprehensive study of multimodal large language models for image quality assessment
+  venue: ECCV
+  year: 2024
+  paper: https://doi.org/10.1007/978-3-031-72904-1_9
+  status: no-code
+  tldr: Benchmarks MLLMs on quality tasks; on SPCD color differences GPT-4V reaches an SRCC of only 0.122 and all models struggle with fine-grained comparison.
+- name: WCG / HDR ΔE evaluation
+  title: Evaluation of color difference models for wide color gamut and high dynamic range
+  venue: J Imaging
+  year: 2024
+  paper: https://doi.org/10.3390/jimaging10120317
+  status: no-code
+  tldr: New psychophysical data over wide gamut, high luminance and small-to-large differences; CAM16-UCS with a power correction generalizes best up to 1611 cd/m², but no model reaches the desired accuracy.
+- name: Color difference in context
+  title: 'Color difference in context: an experiment'
+  venue: CCIW (LNCS)
+  year: 2025
+  paper: https://doi.org/10.1007/978-3-031-72845-7_4
+  status: no-code
+  tldr: The same color pair on different backgrounds gives very different judged differences, suggesting that refining point-wise formulas further is of limited use without context.
+- name: Color IQA survey
+  title: Research progress on color image quality assessment
+  venue: J Imaging
+  year: 2025
+  paper: https://doi.org/10.3390/jimaging11090307
+  status: no-code
+  tldr: Survey of color image quality assessment methods, data sets and open problems.
+- name: Low-level vision tests of metrics
+  title: Evaluating quality metrics through the lenses of psychophysical measurements of low-level vision
+  venue: QoMEX
+  year: 2026
+  paper: https://doi.org/10.1109/qomex69967.2026.11618380
+  status: no-code
+  tldr: Tests 34 metrics against contrast-sensitivity, masking and matching data; CIEDE2000 and HyAB are far more sensitive to achromatic than to chromatic contrast, while S-CIELAB, FLIP, MS-SWD and ΔE ITP behave the opposite way.
+  note: arXiv:2503.16264.
+- name: Hue non-uniformity perception
+  title: A study on hue non-uniformity perception in the display – comparing perceptual data and color difference models
+  venue: J Korea Soc Color Stud
+  year: 2026
+  paper: https://doi.org/10.17289/jkscs.40.3.2026.08.81
+  status: no-code
+  tldr: 2AFC experiment on display color non-uniformity; perception depends on the spatial pattern of the differences, not only their mean, and neither CIEDE2000 nor a CSF-filtered variant predicts it fully.
+- name: Uniformity error for color spaces
+  title: A perceptual uniformity error metric for standard and high dynamic range colour spaces
+  venue: IS&T EI
+  year: 2026
+  paper: https://doi.org/10.2352/ei.2026.38.10.hvei-237
+  status: no-code
+  tldr: An error metric for how perceptually uniform a standard or HDR color space is.
+- name: VLM psychophysics
+  title: Evaluating vision-language models for image quality assessment using psychophysical data
+  venue: arXiv
+  year: 2026
+  paper: https://arxiv.org/abs/2603.24578
+  status: no-code
+  tldr: Controlled paired comparisons of contrast, colorfulness and preference show that VLM agreement with observers varies by attribute and that high self-consistency does not imply perceptual accuracy.

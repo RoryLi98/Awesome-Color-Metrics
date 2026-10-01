@@ -1,0 +1,135 @@
+# friqa: one entry per metric; see CONTRIBUTING.md for the schema
+- name: FSIMc
+  title: 'FSIM: a feature similarity index for image quality assessment'
+  venue: IEEE TIP
+  year: 2011
+  paper: https://doi.org/10.1109/TIP.2011.2109730
+  status: toolbox
+  impl:
+  - label: pyiqa · `fsim`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  - label: piq · `fsim`
+    url: https://github.com/photosynthesis-team/piq
+  align: pixel
+  color: chromatic
+  output: score
+  tldr: Phase congruency and gradient magnitude similarity on luminance, plus a chrominance similarity term in YIQ for the color version FSIMc.
+  note: One score. Pixel-wise feature comparison makes it react strongly to sub-pixel shifts (see the guide).
+- name: VSI
+  title: 'VSI: a visual saliency-induced index for perceptual image quality assessment'
+  venue: IEEE TIP
+  year: 2014
+  paper: https://doi.org/10.1109/TIP.2014.2346028
+  status: toolbox
+  impl:
+  - label: pyiqa · `vsi`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  - label: piq · `vsi`
+    url: https://github.com/photosynthesis-team/piq
+  align: pixel
+  color: chromatic
+  output: score
+  tldr: Uses a visual saliency map both as a similarity feature and as the pooling weight, combined with gradient and chrominance similarity in an opponent space.
+- name: MDSI
+  title: 'Mean deviation similarity index: efficient and reliable full-reference image quality evaluator'
+  venue: IEEE Access
+  year: 2016
+  paper: https://doi.org/10.1109/ACCESS.2016.2604042
+  status: toolbox
+  impl:
+  - label: piq · `mdsi`
+    url: https://github.com/photosynthesis-team/piq
+  align: pixel
+  color: chromatic
+  output: score
+  tldr: Gradient similarity plus a joint chromaticity similarity in a Gaussian color model, pooled by deviation into one score (0 is perfect).
+- name: QSSIM
+  title: 'Quaternion Structural Similarity: A New Quality Index for Color Images'
+  venue: IEEE TIP
+  year: 2012
+  paper: https://doi.org/10.1109/TIP.2011.2181522
+  status: no-code
+  align: pixel
+  color: chromatic
+  output: score
+  tldr: Treats each RGB pixel as a quaternion so that SSIM-style luminance, contrast and structure terms are computed jointly across color channels.
+- name: PerSIM
+  title: 'PerSIM: Multi-resolution image quality assessment in the perceptually uniform color domain'
+  venue: ICIP
+  year: 2015
+  paper: https://doi.org/10.1109/ICIP.2015.7351087
+  code: https://github.com/olivesgatech/PerSIM
+  status: code
+  framework: MATLAB
+  align: pixel
+  color: chromatic
+  output: score
+  tldr: Multi-resolution comparison of lightness and chroma channels in CIELAB with retina-inspired filtering.
+- name: CSV
+  title: 'CSV: Image quality assessment based on color, structure, and visual system'
+  venue: Signal Process Image Commun
+  year: 2016
+  paper: https://doi.org/10.1016/j.image.2016.08.008
+  code: https://github.com/olivesgatech/CSV
+  status: code
+  framework: MATLAB
+  align: pixel
+  color: dedicated
+  output: score
+  tldr: Combines CIEDE2000 differences, an Earth Mover's Distance between color-name descriptors, normalized structure maps and retinal contrast-sensitivity maps, targeting perceived rather than absolute color change.
+- name: LPIPS
+  title: The Unreasonable Effectiveness of Deep Features as a Perceptual Metric
+  venue: CVPR
+  year: 2018
+  paper: https://openaccess.thecvf.com/content_cvpr_2018/html/Zhang_The_Unreasonable_Effectiveness_CVPR_2018_paper.html
+  code: https://github.com/richzhang/PerceptualSimilarity
+  status: code
+  impl:
+  - label: pip · `lpips`
+    url: https://pypi.org/project/lpips/
+  - label: pyiqa · `lpips`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  framework: PyTorch
+  align: pixel
+  color: partial
+  output: map
+  tldr: Weighted L2 distance between normalized deep features at the same spatial positions, calibrated on human 2AFC judgments (BAPPS).
+  note: Position-wise comparison makes it sensitive to shifts; see ST-LPIPS and E-LPIPS in the deep section.
+- name: PieAPP
+  title: 'PieAPP: Perceptual Image-Error Assessment through Pairwise Preference'
+  venue: CVPR
+  year: 2018
+  paper: https://openaccess.thecvf.com/content_cvpr_2018/html/Prashnani_PieAPP_Perceptual_Image-Error_CVPR_2018_paper.html
+  code: https://github.com/prashnani/PerceptualImageError
+  status: code
+  impl:
+  - label: pyiqa · `pieapp`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  - label: piq · `PieAPP`
+    url: https://github.com/photosynthesis-team/piq
+  framework: TensorFlow / PyTorch
+  align: pixel
+  color: partial
+  output: score
+  tldr: Learns a patch-wise perceptual error from pairwise preference probabilities and pools it with learned weights.
+- name: DeepSim
+  title: 'DeepSim: deep similarity for image quality assessment'
+  venue: Neurocomputing
+  year: 2017
+  paper: https://doi.org/10.1016/j.neucom.2017.01.054
+  status: no-code
+  align: pixel
+  color: partial
+  output: score
+  tldr: Local similarity between pretrained CNN features at corresponding positions, pooled across layers; compares mean, deviation and percentile pooling.
+  note: Not to be confused with DeepSSIM.
+- name: MaD-DLS
+  title: 'MaD-DLS: mean and deviation of deep and local similarity for image quality assessment'
+  venue: IEEE TMM
+  year: 2021
+  paper: https://doi.org/10.1109/TMM.2020.3037482
+  status: no-code
+  align: pixel
+  color: partial
+  output: score
+  tldr: Pools the mean and standard deviation of deep-feature and local similarity maps into a quality score.

@@ -1,0 +1,186 @@
+# protocol: one entry per evaluation protocol; see CONTRIBUTING.md for the schema
+- name: ECC alignment
+  title: Parametric image alignment using enhanced correlation coefficient maximization
+  venue: IEEE TPAMI
+  year: 2008
+  paper: https://doi.org/10.1109/TPAMI.2008.113
+  status: toolbox
+  impl:
+  - label: OpenCV · `findTransformECC`
+    url: https://github.com/opencv/opencv
+  align: pixel
+  color: luminance
+  output: params
+  tldr: Estimates a parametric warp by maximizing a correlation coefficient that is invariant to global brightness and contrast, the registration step behind several benchmarks.
+  note: Photometric differences are cancelled, not estimated, so the warp step hides part of what a color metric should measure.
+- name: RealSR protocol
+  title: 'Toward real-world single image super-resolution: a new benchmark and a new model'
+  venue: ICCV
+  year: 2019
+  paper: https://arxiv.org/abs/1904.00523
+  code: https://github.com/csjcai/RealSR
+  status: code
+  align: pixel
+  color: luminance
+  output: score
+  tldr: Captures LR / HR pairs by changing focal length, registers them iteratively with mean / std luminance adjustment, then computes PSNR / SSIM on the Y channel.
+- name: PyNET protocol
+  title: Replacing Mobile Camera ISP with a Single Deep Learning Model
+  venue: CVPRW
+  year: 2020
+  paper: https://arxiv.org/abs/2002.05509
+  code: https://github.com/aiff22/PyNET
+  status: code
+  align: pixel
+  color: partial
+  output: score
+  tldr: SIFT + RANSAC global alignment of phone RAW and DSLR photos, then a small shift / rotation search per 448×448 patch; patches with cross-correlation below 0.9 are discarded.
+  note: The residual misalignment is assumed equal for all methods; absolute color errors are inflated by it.
+- name: AIM 2020 ISP protocol
+  title: AIM 2020 challenge on learned image signal processing pipeline
+  venue: ECCVW
+  year: 2020
+  paper: https://arxiv.org/abs/2011.04994
+  status: no-code
+  align: pixel
+  color: partial
+  output: score
+  tldr: Fidelity track scored by PSNR / SSIM on roughly aligned ZRR patches, perceptual track by mean opinion scores.
+- name: DRealSR protocol
+  title: Component divide-and-conquer for real-world image super-resolution
+  venue: ECCV
+  year: 2020
+  paper: https://arxiv.org/abs/2008.01928
+  code: https://github.com/xiezw5/Component-Divide-and-Conquer-for-Real-World-Image-Super-Resolution
+  status: code
+  align: pixel
+  color: partial
+  output: score
+  tldr: Five-DSLR multi-focal-length SR benchmark; SIFT then iterative patch registration with brightness matching and manual checks; PSNR on Y, SSIM / LPIPS on RGB.
+- name: RealBlur protocol
+  title: Real-world blur dataset for learning and benchmarking deblurring algorithms
+  venue: ECCV
+  year: 2020
+  paper: http://cg.postech.ac.kr/research/RealBlur/
+  code: https://github.com/rimchang/RealBlur
+  status: code
+  align: pixel
+  color: partial
+  output: score
+  tldr: Evaluation script aligns each result to the ground truth with an ECC homography, scales intensity and masks invalid borders before PSNR / SSIM.
+  note: Intensity scaling only; no color correction.
+- name: MAI 2021 ISP protocol
+  title: 'Learned smartphone ISP on mobile NPUs with deep learning, Mobile AI 2021 challenge: report'
+  venue: CVPRW
+  year: 2021
+  paper: https://arxiv.org/abs/2105.07809
+  status: no-code
+  align: pixel
+  color: partial
+  output: score
+  tldr: Phone RAW and Fujifilm sRGB are aligned with a dense correspondence network before PSNR / SSIM fidelity scoring and runtime measurement on NPUs.
+- name: Deep Burst SR protocol
+  title: Deep burst super-resolution
+  venue: CVPR
+  year: 2021
+  paper: https://doi.org/10.1109/CVPR46437.2021.00909
+  code: https://github.com/goutamgmb/deep-burst-sr
+  status: code
+  framework: PyTorch
+  align: pixel
+  color: partial
+  output: score
+  tldr: Aligns the output to the ground truth with PWC-Net optical flow, fits a 3×3 color matrix on Gaussian-smoothed images, masks invalid pixels, then computes PSNR / SSIM / LPIPS.
+  note: Smoothing before fitting the color matrix is "average, then compare"; but the fitted color difference is removed, not reported.
+- name: NTIRE 2021 Burst SR protocol
+  title: 'NTIRE 2021 challenge on burst super-resolution: methods and results'
+  venue: CVPRW
+  year: 2021
+  paper: https://arxiv.org/abs/2106.03839
+  status: no-code
+  align: pixel
+  color: partial
+  output: score
+  tldr: The real-data track uses the aligned, color-corrected PSNR / SSIM / LPIPS of Deep Burst SR.
+- name: LiteISPNet protocol
+  title: Learning RAW-to-sRGB Mappings with Inaccurately Aligned Supervision
+  venue: ICCV
+  year: 2021
+  paper: https://doi.org/10.1109/ICCV48922.2021.00431
+  code: https://github.com/cszhilu1998/RAW-to-sRGB
+  status: code
+  framework: PyTorch
+  align: pixel
+  color: partial
+  output: score
+  tldr: Aligns outputs to the target geometrically only, without color correction, and also reports the unaligned numbers.
+- name: BIPNet protocol
+  title: Burst image restoration and enhancement
+  venue: CVPR
+  year: 2022
+  paper: https://arxiv.org/abs/2110.03680
+  code: https://github.com/akshaydudhane16/BIPNet
+  status: code
+  framework: PyTorch
+  align: pixel
+  color: partial
+  output: score
+  tldr: Follows the BurstSR real-data protocol (flow alignment, color correction, masking) for burst super-resolution, plus standard metrics for denoising and low-light enhancement.
+- name: NTIRE 2022 Burst SR protocol
+  title: NTIRE 2022 Burst Super-Resolution Challenge
+  venue: CVPRW
+  year: 2022
+  paper: https://openaccess.thecvf.com/content/CVPR2022W/NTIRE/html/Bhat_NTIRE_2022_Burst_Super-Resolution_Challenge_CVPRW_2022_paper.html
+  status: no-code
+  align: free
+  color: partial
+  output: score
+  tldr: Drops the aligned, color-corrected metric for the real track and ranks methods by human evaluation, because that metric favors methods trained with the same alignment loss.
+- name: SelfDZSR protocol
+  title: Self-supervised learning for real-world super-resolution from dual zoomed observations
+  venue: ECCV
+  year: 2022
+  paper: https://arxiv.org/abs/2203.01325
+  code: https://github.com/cszhilu1998/SelfDZSR
+  status: code
+  framework: PyTorch
+  align: pixel
+  color: partial
+  output: score
+  tldr: Matches the color and brightness of the ground truth to the input, warps it to the input, then computes full-reference metrics.
+- name: cPSNR (PROBA-V)
+  title: 'HighRes-net: recursive fusion for multi-frame super-resolution of satellite imagery'
+  venue: arXiv
+  year: 2020
+  paper: https://arxiv.org/abs/2002.06460
+  code: https://github.com/ElementAI/HighRes-net
+  status: code
+  framework: PyTorch
+  align: shift
+  color: luminance
+  output: score
+  tldr: Clear-pixel PSNR from the PROBA-V challenge, which crops borders, takes the best of 49 integer shifts and removes a brightness bias before scoring.
+  note: Searching for the best shift biases errors downward, like a neighborhood-minimum ΔE.
+- name: Seam-side color difference (stitching)
+  title: Parallax-tolerant weakly-supervised pixel-wise deep color correction for image stitching of pinhole camera arrays
+  venue: Sensors
+  year: 2025
+  paper: https://doi.org/10.3390/s25030732
+  status: no-code
+  align: shift
+  color: chromatic
+  output: score
+  tldr: Besides PSNR / SSIM in overlaps, scores color consistency by comparing mean colors of thin strips on both sides of the seam, an average-then-compare measure that survives parallax.
+- name: CameraVDP
+  title: 'CameraVDP: perceptual display assessment with uncertainty estimation via camera and visual difference prediction'
+  venue: SIGGRAPH Asia
+  year: 2025
+  paper: https://doi.org/10.1145/3757377.3763825
+  code: https://github.com/gfxdisp/CameraVDP
+  status: code
+  framework: Python
+  align: pixel
+  color: dedicated
+  output: map
+  tldr: Photographs a display, corrects the camera's geometry, MTF, vignetting and color (one-off spectroradiometer calibration), then runs a visual difference predictor with confidence intervals.
+  note: Color is calibrated once, not fitted per image to the reference, so display color errors are kept.

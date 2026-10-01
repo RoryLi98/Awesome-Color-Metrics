@@ -1,0 +1,33 @@
+# Research threads shown in the README and on the interactive page.
+- title: From uniform patches to photographs
+  text: >-
+    Classical formulas were fitted to judgments of uniform patches. SPCD (2023) gave 30,000 rated pairs of real
+    phone photos, and learned or distribution-based metrics now outperform per-pixel ΔE on them.
+  examples: CIEDE2000 → SPCD / CD-Net → CD-Flow → CD-iNet → MS-SWD → CD-Reasoning
+- title: Compare distributions, not pixels
+  text: >-
+    Tolerance to misalignment comes from discarding position: histograms and optimal transport for colors, patch
+    distributions for local structure, feature statistics, order statistics or Gram matrices for deep features.
+  examples: Histogram / EMD → sliced Wasserstein → GPDM → MS-SWD · DISTS → DeepWSD → DOSS → DeepSSIM → DeepDC
+- title: Robust is not the same as color-sensitive
+  text: >-
+    Metrics that normalize local statistics (SSIM, CW-SSIM, deep Gram features) barely react to color casts, so
+    they look stable under shifts for the wrong reason. Report sensitivity to a real change and the reading under
+    misalignment alone.
+  examples: SSIM · CW-SSIM · DeepSSIM vs mean ΔE00 · Lab Wasserstein · MS-SWD
+- title: Visibility models gain color and displays
+  text: >-
+    Spatial ΔE grew into display-aware visible-difference predictors with chromatic contrast sensitivity, and into
+    camera-based measurement of real displays with uncertainty estimates.
+  examples: S-CIELAB → FLIP → HDR-VDP-3 → castleCSF → ColorVideoVDP → CameraVDP
+- title: HDR and wide gamut have no settled ΔE
+  text: >-
+    PQ-based and appearance-based spaces extend color difference to high luminance and wide gamuts, but new
+    psychophysical data show no model reaches the desired accuracy yet.
+  examples: ΔE ITP · Jzazbz · CAM16-UCS · sUCS · PCS26-UCS · Basova 2024
+- title: Context, layout and language
+  text: >-
+    Evidence is growing that averaging point-wise ΔE is not how people judge images: background, spatial pattern
+    and content matter. In parallel, MLLM metrics explain differences in words, though general MLLMs still fail
+    at fine color comparison.
+  examples: Becatti 2025 · Baek 2026 · High 2025 · Hammou 2026 · CD-Reasoning · DepictQA · Wu 2024

@@ -1,0 +1,134 @@
+# photo: one entry per metric; see CONTRIBUTING.md for the schema
+- name: CD-Net (SPCD)
+  title: Measuring Perceptual Color Differences of Smartphone Photographs
+  venue: IEEE TPAMI
+  year: 2023
+  paper: https://doi.org/10.1109/TPAMI.2023.3262424
+  code: https://github.com/hellooks/CDNet
+  status: code
+  framework: PyTorch
+  align: shift
+  color: dedicated
+  output: score
+  tldr: Builds SPCD (30,000 rated pairs; 10,000 are shots of the same scene by six phones, only globally registered, the rest aligned edits) and trains a lightweight color-difference network on it.
+  note: SPCD links are in the repository (Google Drive / Baidu / Kaggle). Most of the 33 compared methods do worse on the non-aligned pairs.
+- name: CD-Flow
+  title: Learning a Deep Color Difference Metric for Photographic Images
+  venue: CVPR
+  year: 2023
+  paper: https://doi.org/10.1109/CVPR52729.2023.02130
+  code: https://github.com/haoychen3/CD-Flow
+  status: code
+  framework: PyTorch
+  align: shift
+  color: dedicated
+  output: score
+  tldr: Maps images to multi-scale features with a normalizing flow and takes the Euclidean distance; it learns to rely on coarse scales, which tolerate small geometric distortions.
+- name: CD-iNet
+  title: 'CD-iNet: deep invertible network for perceptual image color difference measurement'
+  venue: IJCV
+  year: 2024
+  paper: https://doi.org/10.1007/s11263-024-02087-7
+  code: https://github.com/hellooks/CD-iNet
+  status: code
+  framework: PyTorch
+  align: shift
+  color: dedicated
+  output: map
+  tldr: An invertible network learns a color coordinate transform in which Euclidean distance is proportional to perceived color difference, giving local difference maps; reported robust to geometric distortions.
+  note: Demo only; the training code is not released.
+- name: MS-SWD
+  title: Multiscale Sliced Wasserstein Distances as Perceptual Color Difference Measures
+  venue: ECCV
+  year: 2024
+  paper: https://doi.org/10.1007/978-3-031-73668-1_25
+  code: https://github.com/real-hjq/MS-SWD
+  status: code
+  impl:
+  - label: pyiqa · `msswd`
+    url: https://github.com/chaofengc/IQA-PyTorch
+  framework: PyTorch
+  align: free
+  color: dedicated
+  output: score
+  tldr: Training-free. Sliced Wasserstein distance between the distributions of 11×11 CIELAB patches over a 5-level pyramid; sorting the projections discards position, so no alignment is needed.
+  note: Also has a learned variant with trainable projections. Random projections make readings vary with the seed; fix it.
+- name: CD-Attention
+  title: Attention-based color difference perception for photographic images
+  venue: Appl Sci
+  year: 2025
+  paper: https://doi.org/10.3390/app15052704
+  status: no-code
+  align: shift
+  color: dedicated
+  output: score
+  tldr: CNN–Transformer fusion with deformable-convolution attention and high / low-frequency branches; reports the non-aligned SPCD subset separately.
+  note: Code available from the first author on request, according to the paper.
+- name: Skin-tone CD
+  title: Perceptual skin tone color difference measurement for portrait photography
+  venue: VCIP
+  year: 2024
+  paper: https://doi.org/10.1109/VCIP63160.2024.10849890
+  status: no-code
+  align: pixel
+  color: dedicated
+  output: score
+  tldr: Large portrait skin-tone color-difference data set (40k triplets, 160k judgments) and a deep skin-tone color-difference metric trained on it.
+  note: Data and code were announced but not found. Tolerance to misalignment is not discussed.
+- name: SDR–HDR Siamese CD
+  title: Calculating color differences of images via siamese neural network
+  venue: ISCAS
+  year: 2024
+  paper: https://doi.org/10.1109/ISCAS58744.2024.10558454
+  status: no-code
+  align: pixel
+  color: dedicated
+  output: score
+  tldr: Siamese network (color-space conversion, feature extraction, color-difference head) trained on 504 SDR vs SDR-derived HDR image pairs.
+- name: Reproduction difference model
+  title: Towards a model of color reproduction difference
+  venue: Color Res Appl
+  year: 2025
+  paper: https://doi.org/10.1002/col.22969
+  status: no-code
+  align: pixel
+  color: dedicated
+  output: score
+  tldr: Whole-image model of the visual difference between gamut-mapped reproductions that depends on the output gamut and image content; predicts better than mean ΔE.
+- name: CD-Reasoning
+  title: Harnessing Multi-modal Large Language Models for Measuring and Interpreting Color Differences
+  venue: IEEE TIP
+  year: 2025
+  paper: https://doi.org/10.1109/TIP.2024.3522802
+  code: https://github.com/LongYu-LY/CD-Reasoning
+  status: code
+  framework: PyTorch
+  align: shift
+  color: dedicated
+  output: text
+  tldr: Fine-tunes a multimodal LLM on M-SPCD (SPCD with text descriptions of seven attributes such as white balance, contrast, brightness and color) to output a score plus an explanation.
+  note: Checkpoints on Baidu (code 6s5d); the M-SPCD text annotations are not linked separately.
+- name: Photo CD (Niu 2026)
+  title: Perceptual color difference measurement for photographic images
+  venue: Proc SPIE
+  year: 2026
+  paper: https://doi.org/10.1117/12.3117003
+  status: no-code
+  align: pixel
+  color: dedicated
+  output: score
+  tldr: Deep color-difference model trained with target-ranked contrastive learning so that predicted differences keep perceptual continuity and order.
+  note: The abstract does not mention misalignment, data set or code.
+- name: Tone style scorer (ICTone)
+  title: Towards In-Context Tone Style Transfer with a Large-Scale Triplet Dataset
+  venue: ECCV
+  year: 2026
+  paper: https://arxiv.org/abs/2604.16114
+  code: https://github.com/dengyuhai/ICTone
+  status: code
+  framework: PyTorch
+  align: free
+  color: chromatic
+  output: score
+  tldr: A learned tone-style embedding (contrastive pre-training, then 20k human rankings) whose cosine similarity says whether a result matches the tone of a reference with different content.
+  note: Related to color difference but measures style match. Metric checkpoints are on Hugging Face (ToneStyle/MetricCkpt).

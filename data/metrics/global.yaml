@@ -1,0 +1,127 @@
+# global: one entry per metric; see CONTRIBUTING.md for the schema
+- name: Color histogram intersection
+  title: Color indexing
+  venue: IJCV
+  year: 1991
+  paper: https://doi.org/10.1007/bf00130487
+  status: toolbox
+  impl:
+  - label: OpenCV · `compareHist`
+    url: https://github.com/opencv/opencv
+  - label: this repo · guide/shift_vs_cast.py
+    url: guide/shift_vs_cast.py
+  align: free
+  color: chromatic
+  output: score
+  tldr: Overlap between two color histograms; the first widely used position-free color similarity, sensitive to the choice of bins and bounded above.
+- name: Color moments
+  title: Similarity of color images
+  venue: Proc SPIE
+  year: 1995
+  paper: https://doi.org/10.1117/12.205308
+  status: toolbox
+  impl:
+  - label: this repo · guide/shift_vs_cast.py
+    url: guide/shift_vs_cast.py
+  align: free
+  color: chromatic
+  output: score
+  tldr: Mean, standard deviation and skewness of each channel (nine numbers per image) compared with a weighted L1 distance. Crude but almost immune to misalignment.
+  note: The paper computes the moments in HSV; CIELAB is the natural choice for color-difference work.
+- name: Quadratic-form histogram distance
+  title: Efficient color histogram indexing for quadratic form distance functions
+  venue: IEEE TPAMI
+  year: 1995
+  paper: https://doi.org/10.1109/34.391417
+  status: no-code
+  align: free
+  color: chromatic
+  output: score
+  tldr: The QBIC histogram distance, with cross-bin color-similarity weights that soften bin-boundary effects; the paper adds cheap lower bounds to prefilter databases before computing it.
+- name: Color coherence vectors
+  title: Comparing images using color coherence vectors
+  venue: ACM MM
+  year: 1996
+  paper: https://doi.org/10.1145/244130.244148
+  status: no-code
+  align: free
+  color: chromatic
+  output: score
+  tldr: Splits each color bin into pixels that belong to large connected regions and scattered pixels, then compares both histograms.
+- name: Color correlogram
+  title: Image indexing using color correlograms
+  venue: CVPR
+  year: 1997
+  paper: https://doi.org/10.1109/cvpr.1997.609412
+  status: no-code
+  align: free
+  color: chromatic
+  output: score
+  tldr: Probability that a pixel at distance k from a color-i pixel has color j; the experiments use the autocorrelogram (i = j), adding spatial color correlation to histograms.
+- name: Earth Mover's Distance
+  title: The Earth Mover's Distance as a metric for image retrieval
+  venue: IJCV
+  year: 2000
+  paper: https://doi.org/10.1023/a:1026543900054
+  status: toolbox
+  impl:
+  - label: POT · `ot.emd2`
+    url: https://github.com/PythonOT/POT
+  - label: OpenCV · `EMD`
+    url: https://github.com/opencv/opencv
+  align: free
+  color: chromatic
+  output: score
+  tldr: Minimum cost of moving one color distribution (histogram or signature) onto the other; in CIELAB it reads as the average color difference that must be moved.
+  note: Signatures built with k-means add run-to-run randomness; fixed bins are more stable but coarser.
+- name: MPEG-7 color layout
+  title: Color and texture descriptors
+  venue: IEEE TCSVT
+  year: 2001
+  paper: https://doi.org/10.1109/76.927424
+  status: no-code
+  align: shift
+  color: chromatic
+  output: score
+  tldr: Shrinks the image to an 8×8 grid of mean YCbCr colors, takes the DCT and compares a few low-frequency coefficients (6 for Y, 3 each for Cb and Cr).
+  note: Coefficient selection as in Kasutani and Yamada, ICIP 2001 (doi:10.1109/ICIP.2001.959135).
+- name: Colorfulness
+  title: Measuring colorfulness in natural images
+  venue: Proc SPIE
+  year: 2003
+  paper: https://doi.org/10.1117/12.477378
+  status: toolbox
+  impl:
+  - label: this repo · guide/shift_vs_cast.py
+    url: guide/shift_vs_cast.py
+  align: free
+  color: dedicated
+  output: score
+  tldr: One number from the mean and standard deviation of two opponent channels, fitted to colorfulness ratings. The ratio between two images tracks overall saturation changes.
+  note: Ignores hue by design, so a hue rotation goes unnoticed.
+- name: Histogram intersection for image similarity
+  title: Evaluation of image similarity by histogram intersection
+  venue: Color Res Appl
+  year: 2005
+  paper: https://doi.org/10.1002/col.20122
+  status: no-code
+  align: free
+  color: chromatic
+  output: score
+  tldr: Tests histogram intersection in several color spaces against visual similarity judgments; it is the histogram baseline (Lee05) in the SPCD and MS-SWD papers.
+- name: Sliced Wasserstein distance
+  title: Wasserstein barycenter and its application to texture mixing
+  venue: SSVM
+  year: 2011
+  paper: https://doi.org/10.1007/978-3-642-24785-9_37
+  status: toolbox
+  impl:
+  - label: POT · `ot.sliced_wasserstein_distance`
+    url: https://github.com/PythonOT/POT
+  - label: this repo · guide/shift_vs_cast.py
+    url: guide/shift_vs_cast.py
+  align: free
+  color: chromatic
+  output: score
+  tldr: Projects the 3-D color distributions onto random directions, sorts each 1-D projection and averages the 1-D Wasserstein distances. Same idea as EMD, far cheaper.
+  note: 'Theory: Bonneel et al., J Math Imaging Vis 2015 (doi:10.1007/s10851-014-0506-3). Using only the L*, a*, b* axes gives the per-channel 1-D Wasserstein distance.'

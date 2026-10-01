@@ -1,0 +1,9 @@
+# Repository settings used by scripts/build.py.
+# Set `owner` to your GitHub user or organization before publishing, then run:
+#   python scripts/build.py
+owner: RoryLi98
+repo: Awesome-Color-Metrics
+title: Awesome Color Metrics
+tagline: Metrics for color and contrast differences between images, sorted by whether they need a pixel-aligned reference, with links to code and toolbox implementations.
+# Date the paper / code links were last checked by hand
+checked: '2026-09-30'

@@ -1,0 +1,89 @@
+# Data sets for developing and testing color / contrast metrics. `task` should match a category id in categories.yaml.
+- name: SPCD
+  year: 2023
+  source: CD-Net
+  task: photo
+  capture: Same scenes shot with six flagship phones (10k pairs only globally registered) plus ~20k aligned pairs from editing tools, filters and wrong color profiles
+  size: 15,335 images, 30,000 rated pairs
+  url: https://drive.google.com/drive/folders/1Wh9fcDPviZcYWqCpXvnsJux1mnZ5WkCf?usp=share_link
+  use: Main benchmark for photographic color difference, including a non-aligned subset (CD-Net, CD-Flow, MS-SWD, CD-Reasoning)
+- name: CIEDE2000 test data
+  year: 2005
+  source: Sharma, Wu, Dalal
+  task: formula
+  capture: Color pairs with reference ΔE00 values chosen to expose implementation errors
+  size: 34 pairs
+  url: https://hajim.rochester.edu/ece/sites/gsharma/ciede2000/
+  use: Validating any CIEDE2000 implementation
+- name: ColorChecker reference data
+  year: 2014
+  source: BabelColor
+  task: chart
+  capture: L*a*b* and average spectra of the 24 patches, for charts made before and after November 2014
+  size: Text / CGATS files
+  url: https://www.babelcolor.com/colorchecker-2.htm
+  use: Reference values for ColorChecker ΔE
+- name: castleCSF data
+  year: 2024
+  source: castleCSF
+  task: contrast
+  capture: Contrast-detection thresholds pooled from 18 studies, any color direction, luminance and size
+  size: CSV tables
+  url: https://github.com/gfxdisp/castleCSF
+  use: Fitting and testing chromatic / achromatic contrast-sensitivity models
+- name: TMQ-ME
+  year: 2026
+  source: TM metric adaptation
+  task: contrast
+  capture: HDR references with tone-mapped SDR versions focused on basic tone-mapping operations, with quality scores
+  size: 3.04 GB (EXR)
+  url: https://doi.org/10.17863/CAM.129808
+  use: Evaluating metrics for tone-mapped content
+- name: KADID-10k
+  year: 2019
+  source: Lin, Hosu, Saupe
+  task: friqa
+  capture: 81 references × 25 distortion types × 5 levels; color category with color diffusion, color shift, color quantization and two saturation changes
+  size: 10,125 distorted images
+  url: https://database.mmsp-kn.de/kadid-10k-database.html
+  use: Testing FR-IQA on synthetic color distortions
+- name: TID2013
+  year: 2015
+  source: Ponomarenko et al.
+  task: friqa
+  capture: 25 references × 24 distortion types × 5 levels; color-related types are noise in color components, saturation change, color quantization and chromatic aberration
+  size: 3,000 distorted images
+  url: https://www.ponomarenko.info/tid2013.htm
+  use: Testing FR-IQA, including color distortions
+- name: CID:IQ
+  year: 2014
+  source: Liu, Pedersen, Hardeberg
+  task: spatial
+  capture: 23 references × 6 distortions (including two gamut-mapping methods) × 5 levels, rated by 17 observers
+  size: 690 distorted images
+  url: https://doi.org/10.5281/zenodo.17376246
+  use: Image-difference and gamut-mapping quality metrics
+- name: PIPAL
+  year: 2020
+  source: Gu et al.
+  task: deep
+  capture: Outputs of traditional and GAN-based restoration with human ratings; GAN outputs often contain small misalignments
+  size: 250 references, ~29k distorted images
+  url: https://www.jasongt.com/projectpages/pipal.html
+  use: Metrics that tolerate texture and small geometric differences (MIPM, DISTS-style metrics)
+- name: NIGHTS
+  year: 2023
+  source: DreamSim
+  task: deep
+  capture: Synthetic image triplets with human similarity votes
+  size: 20k triplets (58 GB)
+  url: https://github.com/ssundaram21/dreamsim
+  use: Training and testing embedding-based similarity
+- name: RetargetMe
+  year: 2010
+  source: Rubinstein et al.
+  task: study
+  capture: Images retargeted by several methods with user-study rankings
+  size: —
+  url: https://people.csail.mit.edu/mrub/retargetme/
+  use: Metrics for references with very different geometry (DeepSSIM, BDS, EMD)

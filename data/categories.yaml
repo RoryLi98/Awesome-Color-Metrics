@@ -1,0 +1,83 @@
+# Sections of the list, in README order.
+# id    : file name under data/metrics/ (id.yaml)
+# short : label used in the alignment matrix and on the interactive page
+- id: formula
+  title: Color-Difference Formulas & Uniform Color Spaces
+  short: ΔE formulas
+  description: >-
+    Formulas that turn two colors into one number. They know nothing about images: applied per pixel they need
+    exact alignment, applied to region means or distributions they tolerate it. The thread runs from CIELAB ΔE*ab
+    through CIEDE2000 to color-appearance spaces (CAM16-UCS) and HDR / wide-gamut metrics (ΔE ITP, Jzazbz).
+- id: spatial
+  title: Spatial & Visibility-Based Color Difference
+  short: Spatial ΔE / VDP
+  description: >-
+    Per-pixel color difference after modeling human spatial vision: contrast-sensitivity filtering (S-CIELAB,
+    iCID), alternating-image differences (FLIP) and display-aware visible-difference predictors (HDR-VDP,
+    ColorVideoVDP). They output error maps, so they assume pixel correspondence.
+- id: friqa
+  title: Color-Aware Full-Reference IQA
+  short: Color FR-IQA
+  description: >-
+    General quality indices with a chromatic component, from FSIMc and VSI to LPIPS. They rank distortions well on
+    aligned pairs but fold color, contrast and structure into one score, so they cannot say what changed.
+- id: contrast
+  title: Contrast, Tone & Dynamic Range
+  short: Contrast / tone
+  description: >-
+    Global and local contrast (RMS, Michelson, Peli band-limited contrast), the contrast term of SSIM,
+    visibility-based contrast loss / amplification / reversal (DRIM), and metrics for tone-mapped HDR content.
+    Most operate on luminance only.
+- id: photo
+  title: Perceptual Color Difference of Photographs
+  short: Photo color difference
+  description: >-
+    Metrics built and validated for color differences between whole photographs, mostly on SPCD (smartphone
+    photos, with a deliberately non-aligned subset). The closest thing to an answer for "how different are the
+    colors" when pixels do not line up.
+- id: global
+  title: Global Statistics & Color Histograms
+  short: Histograms / statistics
+  description: >-
+    Classical retrieval-era measures that discard position entirely: color moments, colorfulness, histogram
+    distances and optimal transport between color distributions. Immune to misalignment, blind to where a change
+    happened.
+- id: patch
+  title: Patch Distributions & Shift-Tolerant Structure
+  short: Patch / shift-tolerant
+  description: >-
+    Compare distributions of image patches or phase-based structure so that local re-arrangement is allowed:
+    bidirectional similarity, patch-distribution matching, texture statistics and complex-wavelet SSIM.
+- id: deep
+  title: Deep-Feature Metrics Robust to Misalignment
+  short: Deep, misalignment-robust
+  description: >-
+    Learned or deep-feature metrics designed to tolerate shifts, content misalignment or geometrically disparate
+    references: anti-aliased networks, feature statistics, distribution distances, order statistics, Gram
+    matrices, contextual matching and foundation-model embeddings. Color sensitivity is rarely tested.
+- id: protocol
+  title: Evaluation Protocols for Misaligned Ground Truth
+  short: Protocols
+  description: >-
+    How papers with imperfect ground truth (learned ISPs, real-world and burst super-resolution, deblurring,
+    stitching, camera-captured displays) actually compute their numbers: align once, align per image with color
+    correction and masks, search shifts, or switch to human ratings.
+- id: wb
+  title: White Balance & Illuminant Error
+  short: WB error
+  description: >-
+    Errors between an estimated and a true illuminant or white point. A single chromaticity vector per image, so
+    alignment does not matter; the debate is about which error matches what viewers see.
+- id: chart
+  title: Test Charts & Camera Standards
+  short: Charts / standards
+  description: >-
+    Metrics computed on targets with known reference values: ColorChecker ΔE, OECF / tone curve, noise and
+    dynamic range, shading, slanted-edge SFR and dead-leaves texture. Reading only the center of each patch makes
+    them immune to small misregistration.
+- id: study
+  title: Benchmarks, Psychophysics & Surveys
+  short: Studies / surveys
+  description: >-
+    Evaluations of the metrics themselves: psychophysical tests of color-difference models, comparisons of
+    histogram distances and retargeting metrics, MLLM benchmarks, and surveys of color image quality assessment.

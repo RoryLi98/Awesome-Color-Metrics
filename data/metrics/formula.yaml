@@ -1,0 +1,215 @@
+# formula: one entry per metric; see CONTRIBUTING.md for the schema
+- name: CIELAB ΔE*ab (CIE76)
+  title: CIE 015:2018 Colorimetry, 4th Edition (current definition of CIELAB and ΔE*ab, introduced in 1976)
+  venue: CIE TR
+  year: 1976
+  paper: https://doi.org/10.25039/TR.015.2018
+  status: toolbox
+  impl:
+  - label: colour · `CIE 1976`
+    url: https://github.com/colour-science/colour
+  - label: scikit-image · `deltaE_cie76`
+    url: https://github.com/scikit-image/scikit-image
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Euclidean distance in CIELAB. Simple and still widely reported, but over-weights chroma differences of saturated colors.
+  note: The link is the CIE 015:2018 report (paid); the formula itself is in every colorimetry textbook.
+- name: CMC l:c
+  title: Modification to the JPC79 Colour-difference Formula
+  venue: J Soc Dyers Colourists
+  year: 1984
+  paper: https://doi.org/10.1111/j.1478-4408.1984.tb00969.x
+  status: toolbox
+  impl:
+  - label: colour · `CMC`
+    url: https://github.com/colour-science/colour
+  - label: scikit-image · `deltaE_cmc`
+    url: https://github.com/scikit-image/scikit-image
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Weights lightness, chroma and hue differences by position in color space; l:c (usually 2:1) sets acceptability vs perceptibility. Asymmetric in its two inputs.
+- name: CIE94
+  title: CIE94 – a new colour-difference formula
+  venue: J Soc Dyers Colourists
+  year: 1995
+  paper: https://doi.org/10.1111/j.1478-4408.1995.tb01688.x
+  status: toolbox
+  impl:
+  - label: colour · `CIE 1994`
+    url: https://github.com/colour-science/colour
+  - label: scikit-image · `deltaE_ciede94`
+    url: https://github.com/scikit-image/scikit-image
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Chroma-dependent weighting of ΔC and ΔH on top of CIELAB; the CIE recommendation between ΔE*ab and CIEDE2000 (CIE 116-1995).
+- name: CIEDE2000
+  title: 'The development of the CIE 2000 colour-difference formula: CIEDE2000'
+  venue: Color Res Appl
+  year: 2001
+  paper: https://doi.org/10.1002/col.1049
+  code: https://hajim.rochester.edu/ece/sites/gsharma/ciede2000/
+  status: code
+  impl:
+  - label: colour · `CIE 2000`
+    url: https://github.com/colour-science/colour
+  - label: scikit-image · `deltaE_ciede2000`
+    url: https://github.com/scikit-image/scikit-image
+  - label: ciede2000-color-matching (40+ languages)
+    url: https://github.com/michel-leonard/ciede2000-color-matching
+  framework: MATLAB / Excel
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Adds lightness, chroma and hue weighting functions, a chroma-hue interaction term for blues and a rescaled a* axis for grays; the current CIE / ISO standard formula.
+  note: Validate any implementation against the test data of Sharma, Wu and Dalal (Color Res Appl 2005, doi:10.1002/col.20070), which the code link hosts.
+- name: DIN99
+  title: Uniform colour spaces based on the DIN99 colour-difference formula
+  venue: Color Res Appl
+  year: 2002
+  paper: https://doi.org/10.1002/col.10066
+  status: toolbox
+  impl:
+  - label: colour · `DIN99`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Logarithmic lightness and rotated, compressed chroma axes so that plain Euclidean distance approximates perceived differences (DIN99 and the DIN99b-d variants).
+- name: CAM02-UCS
+  title: Uniform colour spaces based on CIECAM02 colour appearance model
+  venue: Color Res Appl
+  year: 2006
+  paper: https://doi.org/10.1002/col.20227
+  status: toolbox
+  impl:
+  - label: colour · `CAM02-UCS / -LCD / -SCD`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Three uniform spaces derived from CIECAM02 for small (SCD), large (LCD) and general (UCS) color differences; accounts for viewing conditions.
+- name: Power functions
+  title: Power functions improving the performance of color-difference formulas
+  venue: Opt Express
+  year: 2015
+  paper: https://doi.org/10.1364/OE.23.000597
+  status: toolbox
+  impl:
+  - label: colour · `power_function_Huang2015`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: score
+  tldr: A power-law correction ΔE' = a·ΔE^b fitted per formula that improves agreement with visual data for CIEDE2000, CAM02-UCS and others.
+- name: CAM16-UCS
+  title: 'Comprehensive color solutions: CAM16, CAT16, and CAM16-UCS'
+  venue: Color Res Appl
+  year: 2017
+  paper: https://doi.org/10.1002/col.22131
+  status: toolbox
+  impl:
+  - label: colour · `CAM16-UCS / -LCD / -SCD`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Simplified successor of CIECAM02 with the CAT16 chromatic adaptation transform and a uniform space for color differences under stated viewing conditions.
+- name: Jzazbz
+  title: Perceptually uniform color space for image signals including high dynamic range and wide gamut
+  venue: Opt Express
+  year: 2017
+  paper: https://doi.org/10.1364/OE.25.015131
+  status: toolbox
+  impl:
+  - label: colour · `XYZ_to_Jzazbz`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: score
+  tldr: PQ-based perceptually uniform space for HDR and wide-gamut signals with absolute luminance input, aiming to predict small and large color differences and hue linearity.
+- name: ΔE ITP
+  title: 'ITU-R BT.2124-0: Objective metric for the assessment of the potential visibility of colour differences in television'
+  venue: ITU-R Rec.
+  year: 2019
+  paper: https://www.itu.int/rec/R-REC-BT.2124-0-201901-I/en
+  status: toolbox
+  impl:
+  - label: colour · `ITP`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: score
+  tldr: 720·‖Δ(I, T, P)‖ in ICtCp on BT.2100 PQ signals; 1 unit is about one just-noticeable difference at the most sensitive adaptation state.
+  note: The recommendation PDF is free on itu.int.
+- name: HyAB
+  title: Distance metrics for very large color differences
+  venue: Color Res Appl
+  year: 2020
+  paper: https://doi.org/10.1002/col.22451
+  status: toolbox
+  impl:
+  - label: colour · `HyAB` / `HyCH`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: score
+  tldr: City-block lightness difference plus Euclidean a*b* distance; the best of the tested metrics for very large differences (about 10 ΔE*ab or more). Used inside FLIP.
+- name: ZCAM
+  title: ZCAM, a colour appearance model based on a high dynamic range uniform colour space
+  venue: Opt Express
+  year: 2021
+  paper: https://doi.org/10.1364/OE.413659
+  status: toolbox
+  impl:
+  - label: colour · `XYZ_to_ZCAM`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: components
+  tldr: Color appearance model built on Jzazbz that predicts ten appearance attributes for HDR content, with accuracy at least on par with CIECAM02 and CAM16.
+- name: sUCS / sCAM
+  title: Simple color appearance model (sCAM) based on simple uniform color space (sUCS)
+  venue: Opt Express
+  year: 2024
+  paper: https://doi.org/10.1364/OE.510196
+  status: toolbox
+  impl:
+  - label: colour · `XYZ_to_sUCS` / `sCAM`
+    url: https://github.com/colour-science/colour
+  align: pair
+  color: dedicated
+  output: score
+  tldr: A structurally simple uniform space and appearance model that ranks first or second overall on 28 uniformity and 6 hue-linearity data sets.
+- name: HDR-WCG projection space
+  title: 'Towards perceptual uniformity and HDR-WCG image processing: a projection-based color space'
+  venue: Opt Express
+  year: 2024
+  paper: https://doi.org/10.1364/OE.530213
+  status: no-code
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Uniform space for HDR / wide-gamut processing built from two 3D projection matrices and a revised nonlinearity, evaluated with STRESS, PU-PSNR, PU-SSIM and HDR-VDP-3.
+- name: Riemannian sinusoidal ΔE
+  title: Riemannian color difference metric for spatial sinusoidal color variations
+  venue: Opt Express
+  year: 2024
+  paper: https://doi.org/10.1364/OE.520947
+  status: no-code
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Riemannian color-difference metric for color variations that are sinusoidal in space, i.e. color difference that depends on spatial frequency rather than on two uniform patches.
+- name: PCS26-UCS
+  title: 'PCS26-UCS: a perceptually uniform color space preserving additive color mixture'
+  venue: IEEE Access
+  year: 2026
+  paper: https://doi.org/10.1109/ACCESS.2026.3728597
+  status: no-code
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Uniform space that keeps additive mixtures on straight lines while reaching CAM16-UCS-level uniformity and better hue linearity.
