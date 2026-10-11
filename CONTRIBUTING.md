@@ -19,8 +19,8 @@ please **do not edit the generated files by hand**.
    pull request. CI runs `python scripts/build.py --check` and fails if the data is invalid or the generated files are
    out of date.
 
-Not comfortable with a PR? Open an issue with the [Add a metric](../../issues/new?template=add-metric.yml) or
-[Report a broken link or wrong label](../../issues/new?template=broken-link.yml) form instead.
+Not comfortable with a PR? Open an issue with the [Add a metric](https://github.com/RoryLi98/Awesome-Color-Metrics/issues/new?template=add-metric.yml) or
+[Report a broken link or wrong label](https://github.com/RoryLi98/Awesome-Color-Metrics/issues/new?template=broken-link.yml) form instead.
 
 ## Which file?
 

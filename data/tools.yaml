@@ -75,7 +75,7 @@
   description: Detects ColorChecker charts and extracts patch colors.
   kind: chart
 - name: sfrmat
-  url: https://burnsdigitalimaging.com/software/sfrmat/
+  url: http://burnsdigitalimaging.com/software/sfrmat/
   language: MATLAB
   description: Reference slanted-edge SFR implementation for ISO 12233 by Peter Burns (BSD).
   kind: chart

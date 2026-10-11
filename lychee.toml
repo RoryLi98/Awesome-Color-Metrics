@@ -6,6 +6,7 @@ timeout = 30
 accept = ["200..=299", "403", "429"]
 exclude = [
   "^https?://pan\\.baidu\\.com",       # needs a browser session
+  "^https://[a-z0-9-]+-my\\.sharepoint\\.(com|cn)/",  # OneDrive share links answer bots with 401 even when valid; check by hand
   "^https?://www\\.iso\\.org",        # bot protection
   "^https?://standards\\.ieee\\.org",
   "^https://img\\.shields\\.io",

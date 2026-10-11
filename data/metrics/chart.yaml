@@ -121,7 +121,7 @@
   status: spec
   impl:
   - label: sfrmat (MATLAB, BSD)
-    url: https://burnsdigitalimaging.com/software/sfrmat/
+    url: http://burnsdigitalimaging.com/software/sfrmat/
   - label: MTF Mapper (C++, BSD)
     url: https://sourceforge.net/projects/mtfmapper/
   align: chart
