@@ -2,15 +2,15 @@
 
 # Code Index
 
-All 82 entries in [Awesome Color Metrics](README.md) with runnable code, first grouped by package so you can see what one `pip install` gives you, then by section. Links checked 2026-09-30.
+All 89 entries in [Awesome Color Metrics](README.md) with runnable code, first grouped by package so you can see what one `pip install` gives you, then by section. Links checked 2026-10-11.
 
 ## By Package
 
 | Package | Entries (function or metric name) |
 |:--|:--|
-| **colour** | CIELAB ΔE\*ab (CIE76) (`CIE 1976`), CMC l:c (`CMC`), CIE94 (`CIE 1994`), CIEDE2000 (`CIE 2000`), DIN99 (`DIN99`), CAM02-UCS (`CAM02-UCS / -LCD / -SCD`), Power functions (`power_function_Huang2015`), CAM16-UCS (`CAM16-UCS / -LCD / -SCD`), Jzazbz (`XYZ_to_Jzazbz`), ΔE ITP (`ITP`), HyAB (`HyAB` / `HyCH`), ZCAM (`XYZ_to_ZCAM`), sUCS / sCAM (`XYZ_to_sUCS` / `sCAM`), ISO 17321-1 (`colour.characterisation`), Root-polynomial color correction (`polynomial_expansion_Finlayson2015`), STRESS (`index_stress`) |
+| **colour** | CIELAB ΔE\*ab (CIE76) (`CIE 1976`), CMC l:c (`CMC`), CIE94 (`CIE 1994`), CIEDE2000 (`CIE 2000`), DIN99 (`DIN99`), CAM02-UCS (`CAM02-UCS / -LCD / -SCD`), Power functions (`power_function_Huang2015`), CAM16-UCS (`CAM16-UCS / -LCD / -SCD`), Jzazbz (`XYZ_to_Jzazbz`), ΔE ITP (`ITP`), HyAB (`HyAB` / `HyCH`), ZCAM (`XYZ_to_ZCAM`), sUCS / sCAM (`XYZ_to_sUCS` / `sCAM`), Oklab (`XYZ_to_Oklab`), ISO 17321-1 (`colour.characterisation`), Root-polynomial color correction (`polynomial_expansion_Finlayson2015`), STRESS (`index_stress`) |
 | **pyiqa** | FSIMc (`fsim`), VSI (`vsi`), LPIPS (`lpips`), PieAPP (`pieapp`), MS-SSIM (`ms_ssim`), SSIM (`ssim` / `ssimc`), GMSD (`gmsd`), MS-SWD (`msswd`), CW-SSIM (`cw_ssim`), DISTS (`dists`), ST-LPIPS (`stlpips`), DeepDC (`deepdc`) |
-| **pip** | FLIP (`flip-evaluator`), ColorVideoVDP (`cvvdp`), LPIPS (`lpips`), DISTS (`DISTS-pytorch`), ST-LPIPS (`stlpips-pytorch`), DreamSim (`dreamsim`), DeepDC (`DeepDC-PyTorch`), Puzzle Similarity (`puzzle_sim`) |
+| **pip** | Helmlab (`helmlab`), FLIP (`flip-evaluator`), ColorVideoVDP (`cvvdp`), LPIPS (`lpips`), DISTS (`DISTS-pytorch`), ST-LPIPS (`stlpips-pytorch`), DreamSim (`dreamsim`), DeepDC (`DeepDC-PyTorch`), Puzzle Similarity (`puzzle_sim`) |
 | **piq** | FSIMc (`fsim`), VSI (`vsi`), MDSI (`mdsi`), PieAPP (`PieAPP`), MS-SSIM (`multi_scale_ssim`), GMSD (`gmsd`) |
 | **scikit-image** | CIELAB ΔE\*ab (CIE76) (`deltaE_cie76`), CMC l:c (`deltaE_cmc`), CIE94 (`deltaE_ciede94`), CIEDE2000 (`deltaE_ciede2000`), SSIM (`structural_similarity`) |
 | **this repo** | Color histogram intersection (guide/shift_vs_cast.py), Color moments (guide/shift_vs_cast.py), Colorfulness (guide/shift_vs_cast.py), Sliced Wasserstein distance (guide/shift_vs_cast.py), Recovery angular error (guide/shift_vs_cast.py) |
@@ -18,6 +18,7 @@ All 82 entries in [Awesome Color Metrics](README.md) with runnable code, first g
 | **POT** | Earth Mover's Distance (`ot.emd2`), Sliced Wasserstein distance (`ot.sliced_wasserstein_distance`) |
 | **ciede2000-color-matching** | CIEDE2000 |
 | **colour-checker-detection** | ColorChecker ΔE |
+| **CSS Color 4** | Oklab (`oklab()` / ΔEOK) |
 | **MTF Mapper** | ISO 12233 SFR |
 | **OpenCV contrib** | ColorChecker ΔE (`mcc`) |
 | **sfrmat** | ISO 12233 SFR |
@@ -28,9 +29,11 @@ All 82 entries in [Awesome Color Metrics](README.md) with runnable code, first g
 
 | Entry | Venue | Alignment | Official code | Other implementations |
 |:--|:--|:--|:--|:--|
+| **[Helmlab](https://arxiv.org/abs/2602.23010)** | arXiv 2026 | Per color pair | [GitHub](https://github.com/Grkmyldz148/helmlab) | [pip · `helmlab`](https://pypi.org/project/helmlab/) |
 | **[sUCS / sCAM](https://doi.org/10.1364/OE.510196)** | Opt Express 2024 | Per color pair | — | [colour · `XYZ_to_sUCS` / `sCAM`](https://github.com/colour-science/colour) |
 | **[ZCAM](https://doi.org/10.1364/OE.413659)** | Opt Express 2021 | Per color pair | — | [colour · `XYZ_to_ZCAM`](https://github.com/colour-science/colour) |
 | **[HyAB](https://doi.org/10.1002/col.22451)** | Color Res Appl 2020 | Per color pair | — | [colour · `HyAB` / `HyCH`](https://github.com/colour-science/colour) |
+| **[Oklab](https://bottosson.github.io/posts/oklab/)** | Blog 2020 | Per color pair | — | [colour · `XYZ_to_Oklab`](https://github.com/colour-science/colour)<br>[CSS Color 4 · `oklab()` / ΔEOK](https://www.w3.org/TR/css-color-4/) |
 | **[ΔE ITP](https://www.itu.int/rec/R-REC-BT.2124-0-201901-I/en)** | ITU-R Rec. 2019 | Per color pair | — | [colour · `ITP`](https://github.com/colour-science/colour) |
 | **[CAM16-UCS](https://doi.org/10.1002/col.22131)** | Color Res Appl 2017 | Per color pair | — | [colour · `CAM16-UCS / -LCD / -SCD`](https://github.com/colour-science/colour) |
 | **[Jzazbz](https://doi.org/10.1364/OE.25.015131)** | Opt Express 2017 | Per color pair | — | [colour · `XYZ_to_Jzazbz`](https://github.com/colour-science/colour) |
@@ -110,10 +113,15 @@ All 82 entries in [Awesome Color Metrics](README.md) with runnable code, first g
 
 | Entry | Venue | Alignment | Official code | Other implementations |
 |:--|:--|:--|:--|:--|
+| **[CFM](https://openaccess.thecvf.com/content/CVPR2026/html/Fang_Too_Vivid_to_Be_Real_Benchmarking_and_Calibrating_Generative_Color_CVPR_2026_paper.html)** | CVPR 2026 | Alignment-free | [GitHub](https://github.com/ZhengyaoFang/CFM)<br><sub>PyTorch</sub> | — |
 | **[DeepSSIM](https://doi.org/10.1109/TPAMI.2025.3627285)** | IEEE TPAMI 2026 | Alignment-free | [GitHub](https://github.com/kekezhang112/DeepSSIM)<br><sub>MATLAB / PyTorch</sub> | — |
 | **[MIIDP](https://doi.org/10.1016/j.eswa.2025.130385)** | Expert Syst Appl 2026 | Alignment-free | [GitHub](https://github.com/CVhnu/MIIDP)<br><sub>PyTorch</sub> | — |
+| **[NOVA](https://arxiv.org/abs/2511.08155)** | WACV 2026 | Alignment-free | [GitHub](https://github.com/stootaghaj/NOVA)<br><sub>PyTorch</sub> | — |
+| **[PR-IQA](https://arxiv.org/abs/2604.04576)** | CVPR 2026 | Alignment-free | [GitHub](https://github.com/Kakaomacao/PR-IQA)<br><sub>PyTorch</sub> | — |
+| **[SCODA](https://arxiv.org/abs/2609.07346)** | arXiv 2026 | Alignment-free | [code](https://gitlab.com/saeedmp/scoda)<br><sub>PyTorch</sub> | — |
 | **[DeepDC](https://doi.org/10.1109/TIP.2025.3635025)** | IEEE TIP 2025 | Alignment-free | [GitHub](https://github.com/h4nwei/DeepDC)<br><sub>PyTorch</sub> | [pip · `DeepDC-PyTorch`](https://pypi.org/project/DeepDC-PyTorch/)<br>[pyiqa · `deepdc`](https://github.com/chaofengc/IQA-PyTorch) |
 | **[Puzzle Similarity](https://doi.org/10.1109/ICCV51701.2025.02682)** | ICCV 2025 | Alignment-free | [GitHub](https://github.com/nihermann/PuzzleSim)<br><sub>PyTorch</sub> | [pip · `puzzle_sim`](https://github.com/nihermann/PuzzleSim) |
+| **[CrossScore](https://arxiv.org/abs/2404.14409)** | ECCV 2024 | Alignment-free | [GitHub](https://github.com/ActiveVisionLab/CrossScore)<br><sub>PyTorch</sub> | — |
 | **[DepictQA](https://doi.org/10.1007/978-3-031-72970-6_15)** | ECCV 2024 | Tolerates small shifts | [GitHub](https://github.com/XPixelGroup/DepictQA)<br><sub>PyTorch</sub> | — |
 | **[DOSS](https://doi.org/10.1109/tbc.2023.3294835)** | IEEE TBC 2024 | Alignment-free | [GitHub](https://github.com/Buka-Xing/DOSS)<br><sub>PyTorch</sub> | — |
 | **[GRIDS](https://doi.org/10.1109/tip.2024.3390565)** | IEEE TIP 2024 | Alignment-free | [GitHub](https://github.com/Land5cape/GRIDS)<br><sub>PyTorch</sub> | — |

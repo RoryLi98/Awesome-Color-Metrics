@@ -213,3 +213,55 @@
   color: dedicated
   output: score
   tldr: Uniform space that keeps additive mixtures on straight lines while reaching CAM16-UCS-level uniformity and better hue linearity.
+- name: Oklab
+  title: A perceptual color space for image processing
+  venue: Blog
+  year: 2020
+  paper: https://bottosson.github.io/posts/oklab/
+  status: toolbox
+  impl:
+  - label: colour · `XYZ_to_Oklab`
+    url: https://github.com/colour-science/colour
+  - label: CSS Color 4 · `oklab()` / ΔEOK
+    url: https://www.w3.org/TR/css-color-4/
+  align: pair
+  color: dedicated
+  output: score
+  tldr: IPT-like space (matrix, cube-root LMS, matrix) fitted to CAM16 lightness and chroma predictions and to IPT hue; its Euclidean distance (ΔEOK) is the color difference CSS Color 4 uses for gamut mapping.
+  note: Fitted for uniform appearance and hue linearity, not to color-difference data; its STRESS on COMBVD is far worse than CIEDE2000 (see Oklch+).
+- name: Helmlab
+  title: 'Helmlab: A Two-Space Family of Analytical, Data-Driven Color Spaces for UI Design Systems'
+  venue: arXiv
+  year: 2026
+  paper: https://arxiv.org/abs/2602.23010
+  code: https://github.com/Grkmyldz148/helmlab
+  status: code
+  impl:
+  - label: pip · `helmlab`
+    url: https://pypi.org/project/helmlab/
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Analytical XYZ-to-Lab transform with learned matrices, power compression, Fourier hue correction and a Helmholtz–Kohlrausch lightness term; its MetricSpace variant reports STRESS 22.5 on COMBVD versus 29.2 for CIEDE2000.
+  note: Single-author preprint; the author reports a regression against CIEDE2000 on He et al. 2022 (3D-printed samples). GenSpace, the second space, targets gradients rather than color difference.
+- name: Oklch+
+  title: 'Oklch+: A Three-Parameter Extension of Oklab for Improved Color Difference Prediction'
+  venue: arXiv
+  year: 2026
+  paper: https://arxiv.org/abs/2606.05255
+  status: no-code
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Adds a power function on L and a Naka–Rushton compression on chroma to Oklab, with three parameters fitted to color-difference data; Euclidean distance reaches STRESS 29.1 on COMBVD, level with CIEDE2000 (Oklab 47.4).
+  note: Evaluated only on sRGB-centered COMBVD data.
+- name: ML color difference (COLIBRI)
+  title: Perceptual Color Difference Modeling Using Machine Learning and Human Similarity Judgments
+  venue: arXiv
+  year: 2026
+  paper: https://arxiv.org/abs/2609.39130
+  status: no-code
+  align: pair
+  color: dedicated
+  output: score
+  tldr: Regression models trained on 2,000 color pairs rated by seven observers on a four-point scale; adding COLIBRI fuzzy color-category features to RGB / HSI differences gives the best fit (LightGBM, R² 0.70).

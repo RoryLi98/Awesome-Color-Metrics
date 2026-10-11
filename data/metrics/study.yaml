@@ -82,8 +82,16 @@
   tldr: An error metric for how perceptually uniform a standard or HDR color space is.
 - name: VLM psychophysics
   title: Evaluating vision-language models for image quality assessment using psychophysical data
-  venue: arXiv
+  venue: CIC
   year: 2026
   paper: https://arxiv.org/abs/2603.24578
   status: no-code
   tldr: Controlled paired comparisons of contrast, colorfulness and preference show that VLM agreement with observers varies by attribute and that high self-consistency does not imply perceptual accuracy.
+- name: ISO 20462-3 quality ruler
+  title: 'ISO 20462-3:2012 Photography — Psychophysical experimental methods for estimating image quality — Part 3: Quality ruler method'
+  venue: ISO
+  year: 2012
+  paper: https://www.iso.org/standard/54617.html
+  status: spec
+  tldr: Observers place a test image against a calibrated series of ruler images, giving scores on the Standard Quality Scale (SQS), whose unit is one just-noticeable difference; parts 1 and 2 cover the overview and the triplet comparison method.
+  note: The JND scale of IEEE 1858 CPIQ is calibrated with this kind of experiment.

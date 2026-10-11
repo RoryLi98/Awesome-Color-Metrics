@@ -296,3 +296,66 @@
   output: score
   tldr: Adds a multi-branch residual enhancement module to VGG19 and compares feature distributions in sliding windows with KL divergence plus cosine distance.
   note: Cites MS-SWD but targets overall quality; tolerance to misalignment is not stated.
+- name: CrossScore
+  title: 'CrossScore: Towards Multi-View Image Evaluation and Scoring'
+  venue: ECCV
+  year: 2024
+  paper: https://arxiv.org/abs/2404.14409
+  code: https://github.com/ActiveVisionLab/CrossScore
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: map
+  tldr: Cross-attention network that predicts an SSIM map for a rendered view from other views of the same scene, trained on data collected during novel-view-synthesis optimization, so no aligned ground truth is needed.
+- name: NOVA
+  title: Non-Aligned Reference Image Quality Assessment for Novel View Synthesis
+  venue: WACV
+  year: 2026
+  paper: https://arxiv.org/abs/2511.08155
+  code: https://github.com/stootaghaj/NOVA
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: Cosine distance between LoRA-tuned DINOv2 embeddings of a rendered view and a nearby non-aligned reference view, trained with a contrastive triplet loss under DISTS / DeepDC supervision on synthetic distortions.
+  note: Weights in the repository (synthetic-distortion and NVS-finetuned checkpoints); the NVS-NAR-IQA user-study set is listed under Datasets.
+- name: PR-IQA
+  title: 'PR-IQA: Partial-Reference Image Quality Assessment for Diffusion-Based Novel View Synthesis'
+  venue: CVPR
+  year: 2026
+  paper: https://arxiv.org/abs/2604.04576
+  code: https://github.com/Kakaomacao/PR-IQA
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: map
+  tldr: Computes a quality map in the region a generated view shares with a reference view taken from another pose, then completes it to a dense per-pixel map with a cross-attention U-Net.
+  note: The overlap is found with 3D correspondence (DINOv2 + VGGT features), not pixel alignment. Checkpoint on Hugging Face (kakaomacao/PR-IQA).
+- name: SCODA
+  title: 'From Explicit References to Scene Manifolds: Distributional Fidelity and Realism for Radiance Field Quality Assessment'
+  venue: arXiv
+  year: 2026
+  paper: https://arxiv.org/abs/2609.07346
+  code: https://gitlab.com/saeedmp/scoda
+  status: code
+  framework: PyTorch
+  align: free
+  color: partial
+  output: components
+  tldr: Fits a multivariate Gaussian to deep features of clean views of a scene and scores a rendered view by its deviation from it (fidelity), fused with a patch-discriminator realism score; no reference needs to match the test pose.
+- name: CFM
+  title: Too Vivid to Be Real? Benchmarking and Calibrating Generative Color Fidelity
+  venue: CVPR
+  year: 2026
+  paper: https://openaccess.thecvf.com/content/CVPR2026/html/Fang_Too_Vivid_to_Be_Real_Benchmarking_and_Calibrating_Generative_Color_CVPR_2026_paper.html
+  code: https://github.com/ZhengyaoFang/CFM
+  status: code
+  framework: PyTorch
+  align: free
+  color: dedicated
+  output: score
+  tldr: Single-image color-fidelity score from a multimodal encoder trained on the Color Fidelity Dataset, which orders real and generated images by color realism; it penalizes the exaggerated saturation and contrast that preference-trained metrics reward.
+  note: No reference image. CFM-7B weights and the CFD data are on Hugging Face (Nineve/CFM_7B, Nineve/CFD_dataset).

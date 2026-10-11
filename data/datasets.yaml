@@ -87,3 +87,19 @@
   size: —
   url: https://people.csail.mit.edu/mrub/retargetme/
   use: Metrics for references with very different geometry (DeepSSIM, BDS, EMD)
+- name: CFD (Color Fidelity Dataset)
+  year: 2026
+  source: CFM
+  task: deep
+  capture: Real photographs and text-to-image generations arranged in ordered levels of color realism
+  size: over 1.3M images
+  url: https://huggingface.co/datasets/Nineve/CFD_dataset
+  use: Training and testing color-fidelity (realism) scores for generated images
+- name: NVS-NAR-IQA
+  year: 2026
+  source: NOVA
+  task: deep
+  capture: Novel views rendered by three NeRF and two Gaussian-splatting models on 17 NeRFStudio scenes, judged against an aligned or a nearby non-aligned reference view
+  size: 1,035 triplets with expert forced-choice votes
+  url: https://live.ece.utexas.edu/research/NVS_NAR_IQA/NVS-NAR-IQA.html
+  use: Testing metrics that accept non-aligned references (NOVA, CrossScore, ST-LPIPS); access via a Google Form

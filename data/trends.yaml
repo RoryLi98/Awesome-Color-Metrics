@@ -31,3 +31,9 @@
     and content matter. In parallel, MLLM metrics explain differences in words, though general MLLMs still fail
     at fine color comparison.
   examples: Becatti 2025 · Baek 2026 · High 2025 · Hammou 2026 · CD-Reasoning · DepictQA · Wu 2024
+- title: Other views as the reference
+  text: >-
+    Novel view synthesis has no ground truth at the test pose, so recent metrics score a rendered view against
+    other views of the scene: cross-attention to nearby views, embeddings that ignore alignment, partial maps
+    completed from the overlap, or a feature distribution of the whole scene.
+  examples: Puzzle Similarity → CrossScore → NOVA → PR-IQA → SCODA

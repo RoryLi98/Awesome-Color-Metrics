@@ -181,3 +181,14 @@
   color: luminance
   output: components
   tldr: Shows that misregistration as small as 0.15 px makes the real part of the cross-correlation MTF fluctuate strongly, and recommends the magnitude of the transfer function instead.
+- name: ISO 19084 chromatic displacement
+  title: ISO 19084:2015 Photography — Digital cameras — Chromatic displacement measurements
+  venue: ISO
+  year: 2015
+  paper: https://www.iso.org/standard/63894.html
+  status: spec
+  align: chart
+  color: chromatic
+  output: params
+  tldr: Defines chromatic displacement (the offset between color channels at the same edge, i.e. lateral chromatic aberration) and the test patterns, conditions and procedures for measuring it from camera output images.
+  note: Sets no pass / fail limit; testing software is distributed through imaging.org. Confirmed in 2025.

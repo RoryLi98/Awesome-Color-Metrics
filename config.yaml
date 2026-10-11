@@ -3,7 +3,9 @@
 #   python scripts/build.py
 owner: RoryLi98
 repo: Awesome-Color-Metrics
+# Public URL of the interactive page (docs/ served by GitHub Pages under the custom domain)
+site: https://ruilin.li/Awesome-Color-Metrics/
 title: Awesome Color Metrics
 tagline: Metrics for color and contrast differences between images, sorted by whether they need a pixel-aligned reference, with links to code and toolbox implementations.
 # Date the paper / code links were last checked by hand
-checked: '2026-09-30'
+checked: '2026-10-11'

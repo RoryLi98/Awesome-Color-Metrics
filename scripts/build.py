@@ -137,7 +137,7 @@ flowchart TD
 
 def readme(d) -> str:
     cfg, cats, s = d['config'], d['categories'], stats(d)
-    pages = f"https://{cfg['owner']}.github.io/{cfg['repo']}/"
+    pages = cfg.get('site') or f"https://{cfg['owner']}.github.io/{cfg['repo']}/"
     ref = {c['id']: f"[{c['short']}](#{slug(c['title'])})" for c in cats}
     L = [GENERATED, '', '<div align="center">', '',
          f"# {cfg['title']} [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)", '',

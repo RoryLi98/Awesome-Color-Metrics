@@ -128,9 +128,9 @@ Out of scope:
 
 ## For maintainers
 
-- Suggested GitHub repository settings (the **About** box): description `A curated list of color and contrast metrics for images, sorted by whether they need a pixel-aligned reference: ΔE formulas, S-CIELAB, FLIP, ColorVideoVDP, MS-SWD, CD-Flow, misalignment-robust deep metrics, white-balance error and camera chart standards.`; topics `color-difference`, `color-science`, `image-quality-assessment`, `perceptual-metrics`, `ciede2000`, `misalignment`, `camera-isp`, `low-level-vision`, `awesome-list`; website: the GitHub Pages URL.
-- `config.yaml` holds the GitHub owner and repository name used in badges and in the link to the interactive page.
-  After changing it, run `python scripts/build.py`.
+- Suggested GitHub repository settings (the **About** box): description `Color and contrast metrics for comparing images, sorted by whether they need a pixel-aligned reference: ΔE formulas, FLIP, ColorVideoVDP, MS-SWD, CD-Flow, white balance and chart standards.`; topics `awesome-list`, `color-difference`, `color-science`, `image-quality-assessment`, `perceptual-metrics`, `ciede2000`, `camera-isp`, `computational-photography`, `low-level-vision`; website `https://ruilin.li/Awesome-Color-Metrics/`.
+- `config.yaml` holds the GitHub owner and repository name used in badges, and `site`, the public URL of the
+  interactive page. After changing it, run `python scripts/build.py`.
 - The interactive page is `docs/index.html`. Enable it once under **Settings → Pages → Build and deployment →
   Deploy from a branch → `main` / `docs`**.
 - `.github/workflows/ci.yml` validates every push and pull request. `.github/workflows/links.yml` runs
