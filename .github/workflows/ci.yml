@@ -19,3 +19,5 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Validate data and check that generated files are up to date
         run: python scripts/build.py --check
+      - name: Check bilingual page identity, local links and translation coverage
+        run: python scripts/check_site.py

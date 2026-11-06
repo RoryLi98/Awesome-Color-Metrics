@@ -1,21 +1,24 @@
 # Contributing
 
+[English](CONTRIBUTING.md) · [简体中文](CONTRIBUTING.zh-CN.md)
+
 Thanks for helping keep this list complete and its labels honest. Every entry lives in a YAML file under
-[`data/`](data/); `README.md`, `CODE.md` and the interactive page in `docs/` are generated from those files, so
+[`data/`](data/); the English and Chinese README, implementation index and interactive pages are generated from those files, so
 please **do not edit the generated files by hand**.
 
 ## Quick start
 
 1. Fork the repository and create a branch.
-2. Edit the right file under `data/metrics/` (see the table below).
+2. Edit the right file under `data/metrics/` (see the table below), and its Chinese overlay under `data/i18n/`.
 3. Regenerate and validate:
 
    ```bash
    pip install -r requirements.txt
    python scripts/build.py
+   python scripts/build.py --check
    ```
 
-4. Commit the YAML change together with the regenerated `README.md`, `CODE.md` and `docs/index.html`, and open a
+4. Commit the YAML change together with all six regenerated English/Chinese files listed below, and open a
    pull request. CI runs `python scripts/build.py --check` and fails if the data is invalid or the generated files are
    out of date.
 
@@ -85,7 +88,7 @@ mechanism compares positions, use `pixel` and say so in `note`.
 |:--|:--|
 | `dedicated` | it was built and validated for color difference (on color-difference data) |
 | `chromatic` | it has explicit chromatic channels or operates on color values (histograms, FSIMc, FLIP) |
-| `partial` | it takes color input but was not designed or tested for color (most deep metrics) |
+| `partial` | it takes color input but is not validated as a dedicated color-difference measure (most deep metrics, including semantic attribute similarity) |
 | `luminance` | it works on luminance only (GMSD, TMQI, CW-SSIM) |
 
 ### `status`
@@ -122,18 +125,33 @@ Out of scope:
 
 ## Style
 
-- English only, neutral tone: no "novel", "state-of-the-art" or "outperforms". Describe what the metric computes.
+- English bibliographic source with a complete Chinese overlay; use a neutral tone: no "novel", "state-of-the-art" or "outperforms". Describe what the metric computes.
+- Use one or two sentences to connect the problem to the method and its evaluation. Put limits such as
+  threshold-only validation, domain-specific judgments or missing training code in `note`.
+- Distinguish color difference, style similarity, color realism and preference; a released general-purpose
+  embedding is not automatically a calibrated color-difference metric.
 - Use the paper's own capitalization for titles and method names.
 - One entry per paper; if a paper defines several variants, mention them in `note`.
+- Update the matching entry in `data/i18n/metrics.zh-CN.yaml`, including its title, summary and any note.
+  Translate categories, datasets, tools, research threads and learning resources in
+  `data/i18n/resources.zh-CN.yaml`. The build rejects missing or obsolete translations.
+- `data/navigation.yaml` groups every category exactly once. Browser filters, English bibliographic titles and
+  resource URLs share one data source across `docs/index.html` and `docs/zh-CN.html`.
 
 ## For maintainers
 
 - Suggested GitHub repository settings (the **About** box): description `Color and contrast metrics for comparing images, sorted by whether they need a pixel-aligned reference: ΔE formulas, FLIP, ColorVideoVDP, MS-SWD, CD-Flow, white balance and chart standards.`; topics `awesome-list`, `color-difference`, `color-science`, `image-quality-assessment`, `perceptual-metrics`, `ciede2000`, `camera-isp`, `computational-photography`, `low-level-vision`; website `https://ruilin.li/Awesome-Color-Metrics/`.
 - `config.yaml` holds the GitHub owner and repository name used in badges, and `site`, the public URL of the
   interactive page. After changing it, run `python scripts/build.py`.
+- Commit all six generated outputs: `README.md`, `README.zh-CN.md`, `CODE.md`, `CODE.zh-CN.md`,
+  `docs/index.html` and `docs/zh-CN.html`. Both pages embed styles, scripts and data and need no CDN or server API.
 - The interactive page is `docs/index.html`. Enable it once under **Settings → Pages → Build and deployment →
   Deploy from a branch → `main` / `docs`**.
 - `.github/workflows/ci.yml` validates every push and pull request. `.github/workflows/links.yml` runs
   [lychee](https://github.com/lycheeverse/lychee) every Monday and opens an issue if links are broken; its settings
   are in `lychee.toml`.
 - When you re-check links by hand, update `checked` in `config.yaml`.
+- For a scoped literature refresh, update `literature_updated` and add
+  `guide/literature-update-YYYY-MM-DD.md` with primary sources, code-release evidence and classification reasons.
+  Keep `checked` for a full link audit. Confirm implementation files, not just a repository README, before
+  labeling a new entry `code`; use `coming-soon` for a placeholder repository.

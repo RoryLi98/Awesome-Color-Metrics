@@ -1,4 +1,20 @@
 # friqa: one entry per metric; see CONTRIBUTING.md for the schema
+- name: EDOKS
+  title: A new image similarity metric for a perceptual and transparent geometric and chromatic assessment
+  venue: Discover Artif Intell
+  year: 2026
+  paper: https://doi.org/10.1007/s44163-026-02424-4
+  code: https://github.com/antdimarino/EDOKS
+  status: code
+  framework: Python / C
+  align: pixel
+  color: chromatic
+  output: components
+  tldr: >-
+    To separate texture and color errors, combines Earth Mover's Distance between clustered Gabor-energy
+    signatures with mean per-pixel Oklab distance; returns a similarity score and separate evidence maps,
+    evaluated on BAPPS judgments.
+  note: The texture term compares distributions, but the Oklab term still needs pixel correspondence. Published October 2026; arXiv:2601.19680.
 - name: FSIMc
   title: 'FSIM: a feature similarity index for image quality assessment'
   venue: IEEE TIP

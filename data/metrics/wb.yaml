@@ -43,7 +43,11 @@
   align: free
   color: dedicated
   output: score
-  tldr: 3,465 acceptability ratings of white-balance shifts in single- and multi-illuminant scenes; dark and low-chroma regions are more sensitive, motivating two corrections to color-difference formulas.
+  tldr: >-
+    To evaluate whether white-balance errors are acceptable, collects 3,465 observer trials in single- and
+    multi-illuminant scenes; proposes color-appearance weighting and a second correction incorporating
+    spatial and illuminance factors.
+  note: Acceptability judgments differ from difference magnitude or preference. The free label concerns the WB-error protocol, not a guarantee of invariance to arbitrary changes of viewpoint.
 - name: Beyond angular error
   title: 'Beyond angular error: rethinking metric for white balance and its effect on image color appearance'
   venue: Color Res Appl

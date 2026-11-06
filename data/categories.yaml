@@ -19,8 +19,9 @@
   title: Color-Aware Full-Reference IQA
   short: Color FR-IQA
   description: >-
-    General quality indices with a chromatic component, from FSIMc and VSI to LPIPS. They rank distortions well on
-    aligned pairs but fold color, contrast and structure into one score, so they cannot say what changed.
+    Quality indices that combine color, contrast and structure on aligned image pairs, from FSIMc and VSI to
+    LPIPS and EDOKS. Some expose separate color and texture evidence; an aggregate quality score alone does
+    not identify which attribute changed.
 - id: contrast
   title: Contrast, Tone & Dynamic Range
   short: Contrast / tone

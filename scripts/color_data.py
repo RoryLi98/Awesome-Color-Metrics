@@ -43,7 +43,7 @@ TOLERANT = ('shift', 'free')
 COLOR = {
     'dedicated': ('dedicated', 'built and validated for color difference'),
     'chromatic': ('chromatic', 'models chromatic channels or color values explicitly'),
-    'partial': ('partial', 'takes color input but was not designed or tested for color; may miss casts'),
+    'partial': ('partial', 'takes color input but is not validated as a dedicated color-difference measure; may miss casts'),
     'luminance': ('luminance only', 'works on luminance; blind to color casts'),
 }
 OUTPUTS = {

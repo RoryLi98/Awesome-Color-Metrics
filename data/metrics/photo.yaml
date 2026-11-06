@@ -54,7 +54,7 @@
   tldr: Training-free. Sliced Wasserstein distance between the distributions of 11×11 CIELAB patches over a 5-level pyramid; sorting the projections discards position, so no alignment is needed.
   note: Also has a learned variant with trainable projections. Random projections make readings vary with the seed; fix it.
 - name: CD-Attention
-  title: Attention-based color difference perception for photographic images
+  title: Attention-Based Color Difference Perception for Photographic Images
   venue: Appl Sci
   year: 2025
   paper: https://doi.org/10.3390/app15052704
@@ -62,7 +62,9 @@
   align: shift
   color: dedicated
   output: score
-  tldr: CNN–Transformer fusion with deformable-convolution attention and high / low-frequency branches; reports the non-aligned SPCD subset separately.
+  tldr: >-
+    To combine local color cues with image context, uses ViT features to guide CNN features through deformable
+    attention, then fuses high- and low-frequency score branches; evaluates on SPCD, including its non-aligned subset.
   note: Code available from the first author on request, according to the paper.
 - name: Skin-tone CD
   title: Perceptual skin tone color difference measurement for portrait photography
@@ -110,7 +112,7 @@
   note: Checkpoints on Baidu (code 6s5d); the M-SPCD text annotations are not linked separately.
 - name: Photo CD (Niu 2026)
   title: Perceptual color difference measurement for photographic images
-  venue: Proc SPIE
+  venue: CVAR (Proc SPIE)
   year: 2026
   paper: https://doi.org/10.1117/12.3117003
   status: no-code

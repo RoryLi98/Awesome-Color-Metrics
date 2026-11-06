@@ -1,4 +1,23 @@
 # deep: one entry per metric; see CONTRIBUTING.md for the schema
+- name: TPIPS
+  title: 'The Many Senses of Visual Similarity: A Text-Prompted Image Perceptual Metric'
+  venue: NeurIPS
+  year: 2026
+  paper: https://arxiv.org/abs/2607.18237
+  code: https://github.com/adobe-research/TPIPS
+  status: code
+  impl:
+  - label: pip · `tpips`
+    url: https://pypi.org/project/tpips/
+  framework: PyTorch
+  align: free
+  color: partial
+  output: score
+  tldr: >-
+    To distinguish different meanings of visual similarity, tunes a vision-language model on human judgments
+    conditioned on free-form attributes such as subject color or lighting; the recommended embedding model
+    compares image representations without pixel correspondence.
+  note: Attribute-conditioned similarity, not a calibrated ΔE or a dedicated photographic color-difference model. Embedding, early-fusion and activation-distance variants, checkpoints and two datasets are released.
 - name: Contextual Loss
   title: The contextual loss for image transformation with non-aligned data
   venue: ECCV
@@ -291,11 +310,11 @@
   year: 2026
   paper: https://doi.org/10.1016/j.dsp.2026.106028
   status: no-code
-  align: shift
+  align: pixel
   color: partial
   output: score
   tldr: Adds a multi-branch residual enhancement module to VGG19 and compares feature distributions in sliding windows with KL divergence plus cosine distance.
-  note: Cites MS-SWD but targets overall quality; tolerance to misalignment is not stated.
+  note: Included as a distribution-metric comparison baseline. Misalignment tolerance is not established; spatially corresponding sliding windows are conservatively labeled pixel-aligned.
 - name: CrossScore
   title: 'CrossScore: Towards Multi-View Image Evaluation and Scoring'
   venue: ECCV

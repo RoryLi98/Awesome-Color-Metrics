@@ -2,7 +2,9 @@
 
 # Code Index
 
-All 89 entries in [Awesome Color Metrics](README.md) with runnable code, first grouped by package so you can see what one `pip install` gives you, then by section. Links checked 2026-10-11.
+[English](CODE.md) · [简体中文](CODE.zh-CN.md)
+
+All 91 entries in [Awesome Color Metrics](README.md) with runnable code, first grouped by package so you can see what one `pip install` gives you, then by section. Full link audit: 2026-10-11; [literature update: 2026-11-06](guide/literature-update-2026-11-06.md).
 
 ## By Package
 
@@ -10,7 +12,7 @@ All 89 entries in [Awesome Color Metrics](README.md) with runnable code, first g
 |:--|:--|
 | **colour** | CIELAB ΔE\*ab (CIE76) (`CIE 1976`), CMC l:c (`CMC`), CIE94 (`CIE 1994`), CIEDE2000 (`CIE 2000`), DIN99 (`DIN99`), CAM02-UCS (`CAM02-UCS / -LCD / -SCD`), Power functions (`power_function_Huang2015`), CAM16-UCS (`CAM16-UCS / -LCD / -SCD`), Jzazbz (`XYZ_to_Jzazbz`), ΔE ITP (`ITP`), HyAB (`HyAB` / `HyCH`), ZCAM (`XYZ_to_ZCAM`), sUCS / sCAM (`XYZ_to_sUCS` / `sCAM`), Oklab (`XYZ_to_Oklab`), ISO 17321-1 (`colour.characterisation`), Root-polynomial color correction (`polynomial_expansion_Finlayson2015`), STRESS (`index_stress`) |
 | **pyiqa** | FSIMc (`fsim`), VSI (`vsi`), LPIPS (`lpips`), PieAPP (`pieapp`), MS-SSIM (`ms_ssim`), SSIM (`ssim` / `ssimc`), GMSD (`gmsd`), MS-SWD (`msswd`), CW-SSIM (`cw_ssim`), DISTS (`dists`), ST-LPIPS (`stlpips`), DeepDC (`deepdc`) |
-| **pip** | Helmlab (`helmlab`), FLIP (`flip-evaluator`), ColorVideoVDP (`cvvdp`), LPIPS (`lpips`), DISTS (`DISTS-pytorch`), ST-LPIPS (`stlpips-pytorch`), DreamSim (`dreamsim`), DeepDC (`DeepDC-PyTorch`), Puzzle Similarity (`puzzle_sim`) |
+| **pip** | Helmlab (`helmlab`), FLIP (`flip-evaluator`), ColorVideoVDP (`cvvdp`), LPIPS (`lpips`), TPIPS (`tpips`), DISTS (`DISTS-pytorch`), ST-LPIPS (`stlpips-pytorch`), DreamSim (`dreamsim`), DeepDC (`DeepDC-PyTorch`), Puzzle Similarity (`puzzle_sim`) |
 | **piq** | FSIMc (`fsim`), VSI (`vsi`), MDSI (`mdsi`), PieAPP (`PieAPP`), MS-SSIM (`multi_scale_ssim`), GMSD (`gmsd`) |
 | **scikit-image** | CIELAB ΔE\*ab (CIE76) (`deltaE_cie76`), CMC l:c (`deltaE_cmc`), CIE94 (`deltaE_ciede94`), CIEDE2000 (`deltaE_ciede2000`), SSIM (`structural_similarity`) |
 | **this repo** | Color histogram intersection (guide/shift_vs_cast.py), Color moments (guide/shift_vs_cast.py), Colorfulness (guide/shift_vs_cast.py), Sliced Wasserstein distance (guide/shift_vs_cast.py), Recovery angular error (guide/shift_vs_cast.py) |
@@ -62,6 +64,7 @@ All 89 entries in [Awesome Color Metrics](README.md) with runnable code, first g
 
 | Entry | Venue | Alignment | Official code | Other implementations |
 |:--|:--|:--|:--|:--|
+| **[EDOKS](https://doi.org/10.1007/s44163-026-02424-4)** | Discover Artif Intell 2026 | Needs pixel alignment | [GitHub](https://github.com/antdimarino/EDOKS)<br><sub>Python / C</sub> | — |
 | **[LPIPS](https://openaccess.thecvf.com/content_cvpr_2018/html/Zhang_The_Unreasonable_Effectiveness_CVPR_2018_paper.html)** | CVPR 2018 | Needs pixel alignment | [GitHub](https://github.com/richzhang/PerceptualSimilarity)<br><sub>PyTorch</sub> | [pip · `lpips`](https://pypi.org/project/lpips/)<br>[pyiqa · `lpips`](https://github.com/chaofengc/IQA-PyTorch) |
 | **[PieAPP](https://openaccess.thecvf.com/content_cvpr_2018/html/Prashnani_PieAPP_Perceptual_Image-Error_CVPR_2018_paper.html)** | CVPR 2018 | Needs pixel alignment | [GitHub](https://github.com/prashnani/PerceptualImageError)<br><sub>TensorFlow / PyTorch</sub> | [pyiqa · `pieapp`](https://github.com/chaofengc/IQA-PyTorch)<br>[piq · `PieAPP`](https://github.com/photosynthesis-team/piq) |
 | **[CSV](https://doi.org/10.1016/j.image.2016.08.008)** | Signal Process Image Commun 2016 | Needs pixel alignment | [GitHub](https://github.com/olivesgatech/CSV)<br><sub>MATLAB</sub> | — |
@@ -119,6 +122,7 @@ All 89 entries in [Awesome Color Metrics](README.md) with runnable code, first g
 | **[NOVA](https://arxiv.org/abs/2511.08155)** | WACV 2026 | Alignment-free | [GitHub](https://github.com/stootaghaj/NOVA)<br><sub>PyTorch</sub> | — |
 | **[PR-IQA](https://arxiv.org/abs/2604.04576)** | CVPR 2026 | Alignment-free | [GitHub](https://github.com/Kakaomacao/PR-IQA)<br><sub>PyTorch</sub> | — |
 | **[SCODA](https://arxiv.org/abs/2609.07346)** | arXiv 2026 | Alignment-free | [code](https://gitlab.com/saeedmp/scoda)<br><sub>PyTorch</sub> | — |
+| **[TPIPS](https://arxiv.org/abs/2607.18237)** | NeurIPS 2026 | Alignment-free | [GitHub](https://github.com/adobe-research/TPIPS)<br><sub>PyTorch</sub> | [pip · `tpips`](https://pypi.org/project/tpips/) |
 | **[DeepDC](https://doi.org/10.1109/TIP.2025.3635025)** | IEEE TIP 2025 | Alignment-free | [GitHub](https://github.com/h4nwei/DeepDC)<br><sub>PyTorch</sub> | [pip · `DeepDC-PyTorch`](https://pypi.org/project/DeepDC-PyTorch/)<br>[pyiqa · `deepdc`](https://github.com/chaofengc/IQA-PyTorch) |
 | **[Puzzle Similarity](https://doi.org/10.1109/ICCV51701.2025.02682)** | ICCV 2025 | Alignment-free | [GitHub](https://github.com/nihermann/PuzzleSim)<br><sub>PyTorch</sub> | [pip · `puzzle_sim`](https://github.com/nihermann/PuzzleSim) |
 | **[CrossScore](https://arxiv.org/abs/2404.14409)** | ECCV 2024 | Alignment-free | [GitHub](https://github.com/ActiveVisionLab/CrossScore)<br><sub>PyTorch</sub> | — |

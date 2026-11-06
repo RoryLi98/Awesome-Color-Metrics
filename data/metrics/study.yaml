@@ -1,4 +1,48 @@
 # study: one entry per paper; `align` and `color` are optional in this section
+- name: Color-difference model evaluation review
+  title: Review of Measures Used for Evaluating Color Difference Models
+  venue: arXiv
+  year: 2026
+  paper: https://arxiv.org/abs/2601.13402
+  status: no-code
+  tldr: >-
+    To compare predicted and measured discrimination ellipsoids without arbitrary directional sampling,
+    integrates model-evaluation measures over complete ellipsoids; analyzes coordinate invariance,
+    scale optimization and differences between STRESS, gamma-based and geometric measures.
+  note: Evaluates local color-discrimination models; this is not a new image-pair metric.
+- name: Empirical 3D color metric field
+  title: An empirical three-dimensional metric field for color space
+  venue: J Vision
+  year: 2026
+  paper: https://doi.org/10.1167/jov.26.9.3
+  status: no-code
+  tldr: >-
+    To map local discrimination across three-dimensional sRGB space, measures eight observers at 35 reference
+    colors along seven orientations, fits minimum-volume ellipsoids and interpolates their positive-definite
+    matrices; compares local anisotropy with CIEDE2000.
+  note: Threshold discrimination under the study's viewing conditions, rather than suprathreshold photographic color difference.
+- name: Texture-dependent color tolerances
+  title: 'Effect of texture on suprathreshold color-difference tolerances: dataset of visual tolerances'
+  venue: JOSA A
+  year: 2026
+  paper: https://doi.org/10.1364/JOSAA.588315
+  status: no-code
+  tldr: >-
+    To test whether uniform-patch color tolerances transfer to textured stimuli, combines ten textures with
+    11 color centers and 18 directions; 26 observers match differences to a 2.1 ΔE*ab anchor, showing
+    texture-dependent lightness, chroma and hue tolerances.
+  note: A psychophysical dataset study; no downloadable implementation or standalone data release was confirmed in this update.
+- name: Metamer mismatching and discrimination
+  title: Metamer Mismatching Predicts Color Difference Ellipsoids
+  venue: Color Res Appl
+  year: 2025
+  paper: https://doi.org/10.1002/col.22976
+  status: no-code
+  tldr: >-
+    To explain why discrimination thresholds vary across color space, tests whether color variability caused
+    by metamer mismatching predicts color-difference ellipsoids; offers a theoretical account complementary
+    to formulas fitted to psychophysical judgments.
+  note: A hypothesis about discrimination geometry, not a replacement image-difference score.
 - name: Histogram distance benchmark
   title: Empirical evaluation of dissimilarity measures for color and texture
   venue: ICCV

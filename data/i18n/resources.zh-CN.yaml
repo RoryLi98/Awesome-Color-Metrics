@@ -1,0 +1,80 @@
+config:
+  tagline: 色差与对比度评测文献库，按像素配准要求组织，收录论文、代码与工具箱实现。
+categories:
+  formula: {title: "色差公式与均匀色空间", short: "ΔE 公式与色空间", description: "将颜色对转换为差异数值。逐像素使用时需要准确配准，比较区域均值或分布时可放宽位置对应；涵盖 CIELAB、CIEDE2000、CAM16-UCS，以及 HDR 和宽色域度量。"}
+  spatial: {title: "空间视觉与可见性色差", short: "空间色差与 VDP", description: "通过对比敏感度滤波、交替显示差异或显示设备模型预测空间色差，包括 S-CIELAB、FLIP、HDR-VDP 与 ColorVideoVDP；逐像素差异图需要图像对应。"}
+  friqa: {title: "考虑颜色的全参考图像质量评价", short: "彩色全参考 IQA", description: "在已配准图像对上结合颜色、对比度与结构进行评价，涵盖 FSIMc、VSI、LPIPS 和 EDOKS。部分方法可分离颜色与纹理证据，但单一质量分数不能完整解释变化来源。"}
+  contrast: {title: "对比度、色调与动态范围", short: "对比度与色调", description: "涵盖全局与局部对比度、Peli 带限对比度、SSIM 对比度项、DRIM 可见性变化，以及 HDR 色调映射评价；多数方法仅使用亮度。"}
+  photo: {title: "摄影图像的感知色差", short: "摄影图像色差", description: "面向整幅照片的颜色差异设计和验证的指标，多数使用包含非配准子集的 SPCD 手机摄影数据；需区分颜色差异、色调风格匹配与整体质量。"}
+  global: {title: "全局统计与颜色直方图", short: "直方图与全局统计", description: "使用颜色矩、丰富色彩感、直方图距离及最优传输等全局信息，不要求逐像素对应；通常无法指出颜色变化发生的位置，裁剪或场景内容变化仍会影响分布。"}
+  patch: {title: "图像块分布与平移容忍结构", short: "图像块与平移容忍", description: "通过双向匹配、图像块分布、纹理统计或复小波结构比较，允许一定局部重排；空间容忍能力与颜色敏感性需要分别检验。"}
+  deep: {title: "适应错位的深度特征指标", short: "深度特征与错位", description: "利用抗混叠网络、特征统计、分布距离、顺序统计、Gram 矩阵、上下文匹配或基础模型嵌入，放宽参考对应要求；同时保留需配准的比较基线，不能仅凭深度特征推断颜色敏感性。"}
+  protocol: {title: "非配准真值的评测协议", short: "非配准评测协议", description: "整理学习式 ISP、真实世界与连拍超分辨率、去模糊、拼接及相机拍屏的评测做法，包括几何配准、逐图颜色校正、有效区域掩膜、平移搜索与主观评分。"}
+  wb: {title: "白平衡与光源估计误差", short: "白平衡误差", description: "比较估计与真实光源或白点，通常每幅图像只使用一个色度向量，不依赖像素对应；也收录白平衡错误的感知距离和可接受性研究。"}
+  chart: {title: "测试图卡与相机标准", short: "图卡与相机标准", description: "在已知参考目标上测量 ColorChecker 色差、色调曲线、噪声、动态范围、场均匀性、斜边 SFR 与枯叶纹理。读取色块中心可减少轻微定位误差，但部分互谱方法需要精确配准。"}
+  study: {title: "基准、心理物理与综述", short: "基准与综述", description: "评价指标本身的研究，包括颜色判别与阈上容限、色差模型比较、直方图和重定向评价、多模态模型测试及彩色图像质量综述。"}
+datasets:
+  TPIPS Odd-One-Out: {capture: "带自由文本视觉属性的合成图像三元组，由五位标注者进行异类选择", size: "训练、验证与测试集；官方仓库标为 26 GB", use: "训练和评价物体颜色、光照等属性条件相似性，不是标定后的色差评分"}
+  TPIPS Cross-Algorithm 2AFC: {capture: "对训练中未见的图像编辑、合成、新视角与图像转三维算法结果进行属性条件成对比较", size: "仅测试集；官方仓库标为 1.7 GB", use: "检验属性相似性对外部算法的泛化，与合成三元组数据分开"}
+  SPCD: {capture: "六部旗舰手机拍摄相同场景的约一万对全局配准图像，加约两万对由编辑、滤镜和错误颜色配置生成的已对齐图像", size: "15,335 幅图像，30,000 对评分", use: "摄影色差主要基准，含非配准子集；用于 CD-Net、CD-Flow、MS-SWD、CD-Reasoning。百度网盘提取码 txeh，原 Google Drive 副本已失效"}
+  CIEDE2000 test data: {capture: "专门用于暴露实现错误、带参考 ΔE00 值的颜色对", size: "34 对颜色", use: "验证各种 CIEDE2000 实现"}
+  ColorChecker reference data: {capture: "24 个色块的 L*a*b* 与平均光谱，区分 2014 年 11 月前后的图卡版本", size: "文本与 CGATS 文件", use: "为 ColorChecker ΔE 提供参考数值"}
+  castleCSF data: {capture: "汇集 18 项研究的对比检测阈值，覆盖颜色方向、亮度与刺激面积", size: "CSV 数据表", use: "拟合和测试彩色与非彩色对比敏感度模型"}
+  TMQ-ME: {capture: "HDR 参考与不同基础色调映射操作产生的 SDR 结果，以及质量评分", size: "3.04 GB 的 EXR 数据", use: "评价色调映射图像指标"}
+  KADID-10k: {capture: "81 个参考 × 25 类失真 × 5 个等级，颜色类包括颜色扩散、偏移、量化与两种饱和度变化", size: "10,125 幅失真图像", use: "在合成颜色失真上测试全参考 IQA"}
+  TID2013: {capture: "25 个参考 × 24 类失真 × 5 个等级；颜色相关项包括色度噪声、饱和度变化、颜色量化与色差", size: "3,000 幅失真图像", use: "测试包含颜色失真的全参考 IQA"}
+  CID:IQ: {capture: "23 个参考 × 6 类失真（包括两种色域映射）× 5 个等级，由 17 位观察者评分", size: "690 幅失真图像", use: "评价图像差异与色域映射质量指标"}
+  PIPAL: {capture: "带人类评分的传统与 GAN 复原结果，GAN 输出常有轻微错位", size: "250 个参考，约 29,000 幅失真图像", use: "测试容忍纹理与轻微几何差异的指标，如 MIPM 和 DISTS 类方法"}
+  NIGHTS: {capture: "带人类相似性投票的合成图像三元组", size: "20,000 组三元组，58 GB", use: "训练和测试基于嵌入的相似性"}
+  RetargetMe: {capture: "多种重定向方法的结果及用户研究排名", size: "未单列规模", use: "评价参考与结果几何差异较大时的指标，包括 DeepSSIM、BDS 和 EMD"}
+  CFD (Color Fidelity Dataset): {capture: "按颜色真实感等级排序的真实照片与文本生成图像", size: "超过 130 万幅图像", use: "训练和测试生成图像的颜色保真度与真实感指标"}
+  NVS-NAR-IQA: {capture: "在 17 个 NeRFStudio 场景中由三种 NeRF 与两种高斯泼溅模型渲染的新视角，针对已配准或邻近非配准视角进行判断", size: "1,035 组三元组，含专家强制选择投票", use: "测试接受非配准参考的 NOVA、CrossScore、ST-LPIPS 等指标；通过 Google 表单申请访问"}
+tools:
+  colour: {description: "颜色科学工具箱，提供常用 ΔE、Jzazbz / ZCAM / sUCS / Oklab 等均匀空间、相机颜色表征与 STRESS 指标。"}
+  scikit-image: {description: "提供 Lab 转换、deltaE_cie76、deltaE_ciede94、deltaE_ciede2000、deltaE_cmc 与 structural_similarity。"}
+  ciede2000-color-matching: {description: "使用统一测试集的公有领域 CIEDE2000 多语言实现。"}
+  coloraide: {description: "提供多种色空间和 ΔE 方法的颜色处理库。"}
+  culori: {description: "用于网页的颜色程序库，包含色差函数。"}
+  OpenCV: {description: "提供 compareHist 直方图交集、χ²、Bhattacharyya 距离，EMD，以及用于光度变化不敏感配准的 findTransformECC。"}
+  pyiqa (IQA-PyTorch): {description: "图像质量工具箱，包含 msswd、fsim、vsi、cw_ssim、lpips、stlpips、dists、deepdc、pieapp、ms_ssim 和 gmsd；采用非商业许可。"}
+  piq: {description: "提供 IQA 指标与损失，包括 FSIM、VSI、MDSI、GMSD、HaarPSI、LPIPS、DISTS 和 PieAPP。"}
+  POT: {description: "Python 最优传输库，为颜色或图像块分布提供精确 EMD、一维 Wasserstein 与切片 Wasserstein 距离。"}
+  ColorVideoVDP: {description: "考虑显示设备的图像与视频可见差异预测器，可通过 pip install cvvdp 安装；也提供 ColorVideoVDP-ML 和 PU-PSNR。"}
+  HDR-VDP: {description: "从光度输入预测质量、可见性与对比度失真的 HDR-VDP-3 工具。"}
+  FLIP: {description: "生成 LDR 与 HDR FLIP 误差图，可通过 pip install flip-evaluator 安装。"}
+  Butteraugli: {description: "面向刚可察觉差异的心理视觉分数与空间差异图，用于 JPEG XL 编码。"}
+  SSIMULACRA 2: {description: "在感知色空间中计算压缩伪影指标，以 CID22、TID2013、KADID-10k 和 KonFiG-IQA 数据调参。"}
+  colour-checker-detection: {description: "检测 ColorChecker 图卡并提取色块颜色。"}
+  sfrmat: {description: "Peter Burns 提供的 ISO 12233 斜边 SFR 参考实现，采用 BSD 许可。"}
+  MTF Mapper: {description: "开源斜边 MTF 测量工具，采用 BSD 许可。"}
+  Imatest Colorcheck docs: {description: "解释图卡 ΔE00、ΔC00 与饱和度测量，即使不使用商业软件也有参考价值。"}
+  iQ-Analyzer-X: {description: "商业图卡分析软件，覆盖 SFR、纹理、OECF、颜色、场均匀性、畸变和噪声。"}
+trends:
+  - {title: "从均匀色块走向摄影图像", text: "经典色差公式拟合的是均匀色块判断。SPCD 提供 30,000 对真实手机照片评分，使学习式和分布式指标能够对照整图感知判断评价，并包含残留错位情形。"}
+  - {title: "通过分布放宽像素对应", text: "颜色直方图、图像块分布、特征统计与 Gram 矩阵放宽逐像素对应；裁剪、场景变化和特征提取器仍会影响分数，舍弃位置不代表对所有几何变换不变。"}
+  - {title: "区分错位容忍与颜色敏感性", text: "平移下稳定并不能证明对白平衡色偏或彩度误差敏感。归一化、仅亮度处理与语义特征可能削弱某些颜色变化，应在相同协议下分别测试真实颜色变化和仅有错位的对照。"}
+  - {title: "视觉模型扩展到颜色与真实显示", text: "空间 ΔE 发展为具有彩色对比敏感度、考虑显示设备的可见差异预测器，也延伸到通过相机测量真实显示器并估计不确定度。"}
+  - {title: "HDR、宽色域与高光适应", text: "基于 PQ 和颜色外观的空间把色差扩展到高亮度与宽色域。超过漫反射白的高光判断推动 IPT-LCs 等修正；结果依赖亮度、适应状态和验证数据。"}
+  - {title: "上下文、空间布局与语言", text: "背景、空间模式和图像内容都会影响颜色差异判断。多模态指标可用文字解释差异，TPIPS 还支持文本指定属性，但应区分差异幅度、属性相似性、风格和真实感。"}
+  - {title: "局部判别与可见图像差异", text: "经验三维判别场、神经 Fisher 信息模型和简化黎曼线元描述局部颜色阈值；拟合判别数据并不能直接验证阈上摄影色差，评价模型的方法本身也需要考察。"}
+  - {title: "用其他视角作为参考", text: "新视角合成缺少测试位姿的真值；近期方法利用邻近视角交叉注意力、不依赖对齐的嵌入、重叠区域质量图补全或整场景特征分布评价渲染结果。"}
+resources:
+  tutorials:
+    - {name: "色差指标入门（本仓库）", url: "guide/color-metrics-101.md", description: "介绍 ΔE 分解、配准与非配准测量、先聚合后比较、色偏与错位检查，以及结果报告方式。"}
+    - {name: "CIEDE2000 实现说明与测试数据", url: "https://hajim.rochester.edu/ece/sites/gsharma/ciede2000/", description: "提供 MATLAB、Excel 代码及可检出常见实现错误的测试颜色对。"}
+    - {name: "ColorVideoVDP 项目页", url: "https://www.cl.cam.ac.uk/research/rainbow/projects/colorvideovdp/", description: "解释可见差异预测中的显示模型、JOD 单位与失真图。"}
+    - {name: "使用 Colorcheck", url: "https://docs.imatest.com/docs/colorcheck", description: "图卡颜色准确度、ΔE 与 ΔC、曝光和饱和度的实践说明。"}
+    - {name: "理解相机内渲染管线与人工智能、深度学习的作用", url: "http://www.eecs.yorku.ca/~mbrown/ICCV2023_Brown.html", description: "介绍相机管线的颜色科学，为理解 ISP 色彩指标提供背景。"}
+  books:
+    - {name: "《颜色外观模型》第三版", url: "https://doi.org/10.1002/9781118653128", description: "介绍颜色外观现象、CIECAM02 与现代均匀色空间背后的模型。"}
+    - {name: "《颜色测量》第四版", url: "https://doi.org/10.1002/9781119975595", description: "介绍色度学、色差公式及实际使用方法。"}
+    - {name: "《数字彩色成像手册》", url: "https://doi.org/10.1201/9781420041484", description: "面向成像系统的颜色科学，涵盖色差与设备表征。"}
+    - {name: "《图像质量手册》", url: "https://doi.org/10.1201/9780203910825", description: "介绍质量标尺、JND 量表以及 CPIQ 类指标的感知标定。"}
+    - {name: "《现代图像质量评价》", url: "https://doi.org/10.1007/978-3-031-02238-8", description: "从误差可见性到结构相似性的全参考 IQA 简明专著。"}
+  related_lists:
+    - {name: "图像质量评价文献列表", url: "https://github.com/chaofengc/Awesome-Image-Quality-Assessment", description: "主要 IQA 文献列表，Color IQA 小节收录 MS-SWD 与 CD-Flow。"}
+    - {name: "颜色科学资源列表", url: "https://github.com/colour-science/awesome-colour", description: "收集通用颜色科学程序库、书籍和文章。"}
+    - {name: "神经 ISP 文献库", url: "https://github.com/RoryLi98/Awesome-Neural-ISP", description: "收录神经相机 ISP 的论文、代码与权重；白平衡与颜色处理是这些指标的应用场景。"}
+    - {name: "颜色恒常性文献列表", url: "https://github.com/iamsiddhantsahu/awesome-color-constancy", description: "颜色恒常性与光源估计文献，2020 年后未更新。"}
+    - {name: "感知质量文献列表", url: "https://github.com/shreshthsaini/Awesome-Perceptual-Quality", description: "按标签收集图像、视频、HDR 质量方法及主观数据集。"}
+    - {name: "使用 FLIP 的论文", url: "https://github.com/NVlabs/flip/blob/main/misc/papersUsingFLIP.md", description: "NVIDIA 维护的使用或引用 FLIP 的论文列表。"}

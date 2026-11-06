@@ -9,3 +9,5 @@ title: Awesome Color Metrics
 tagline: Metrics for color and contrast differences between images, sorted by whether they need a pixel-aligned reference, with links to code and toolbox implementations.
 # Date the paper / code links were last checked by hand
 checked: '2026-10-11'
+# Literature refresh; this is separate from the full paper/code link audit above.
+literature_updated: '2026-11-06'

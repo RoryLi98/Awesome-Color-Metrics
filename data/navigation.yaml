@@ -1,0 +1,16 @@
+- id: foundations
+  title: Foundations & visual models
+  title_zh: 色差基础与视觉模型
+  categories: [formula, spatial, contrast]
+- id: photography
+  title: Photographic color & appearance
+  title_zh: 摄影色彩与外观
+  categories: [photo, friqa, wb]
+- id: correspondence
+  title: Comparing misaligned images
+  title_zh: 非配准图像比较
+  categories: [global, patch, deep, protocol]
+- id: evaluation
+  title: Measurement & evaluation
+  title_zh: 测量与评测
+  categories: [chart, study]

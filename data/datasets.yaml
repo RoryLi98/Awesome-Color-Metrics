@@ -1,4 +1,20 @@
 # Data sets for developing and testing color / contrast metrics. `task` should match a category id in categories.yaml.
+- name: TPIPS Odd-One-Out
+  year: 2026
+  source: TPIPS
+  task: deep
+  capture: Synthetic image triplets with free-form visual attributes and odd-one-out judgments from five annotators
+  size: Train / validation / test; 26 GB per official repository
+  url: https://huggingface.co/datasets/sywang/tpips-odd-one-out
+  use: Training and evaluating attribute-conditioned similarity, including subject color and lighting; not calibrated color-difference ratings
+- name: TPIPS Cross-Algorithm 2AFC
+  year: 2026
+  source: TPIPS
+  task: deep
+  capture: Attribute-conditioned pairwise comparisons of outputs from image editing, compositing, novel-view synthesis and image-to-3D algorithms held out from training
+  size: Test only; 1.7 GB per official repository
+  url: https://huggingface.co/datasets/sywang/tpips-2afc
+  use: Testing generalization of attribute-conditioned similarity to external algorithms; separate from the synthetic odd-one-out dataset
 - name: SPCD
   year: 2023
   source: CD-Net

@@ -265,3 +265,43 @@
   color: dedicated
   output: score
   tldr: Regression models trained on 2,000 color pairs rated by seven observers on a four-point scale; adding COLIBRI fuzzy color-category features to RGB / HSI differences gives the best fit (LightGBM, R² 0.70).
+- name: Conformally-Euclidean line element
+  title: A conformally-Euclidean Line Element for evaluating color differences
+  venue: arXiv
+  year: 2026
+  paper: https://arxiv.org/abs/2606.12588
+  status: no-code
+  align: pair
+  color: dedicated
+  output: score
+  tldr: >-
+    To simplify local color-discrimination geometry, scales a Euclidean line element by a luminance-dependent
+    factor and derives CIELAB-like perceptual coordinates; fits surface-color discrimination datasets.
+  note: Local discrimination model, not a validated whole-photograph difference score; September 2026 revision.
+- name: V1 Fisher color metric
+  title: A Metric for Three-Dimensional Color Discrimination Derived from V1 Population Fisher Information
+  venue: arXiv
+  year: 2026
+  paper: https://arxiv.org/abs/2603.24356
+  status: no-code
+  align: pair
+  color: dedicated
+  output: score
+  tldr: >-
+    To relate color-discrimination thresholds to neural encoding, derives a Riemannian metric from adaptation,
+    opponent channels and V1 population Fisher information; fits 17 parameters to four threshold datasets
+    covering 96 discrimination conditions.
+  note: Preprint fitted to threshold data; reported fit statistics do not establish accuracy for large color differences or photographs.
+- name: IPT-LCs
+  title: Color difference characterization for stimuli with luminance beyond diffuse white
+  venue: Opt Express
+  year: 2026
+  paper: https://doi.org/10.1364/OE.609373
+  status: no-code
+  align: pair
+  color: dedicated
+  output: score
+  tldr: >-
+    To measure HDR highlight color differences, collects judgments for 980 pairs at 194–977 cd/m² under
+    a 203 cd/m² D65 diffuse white and optimizes IPT into IPT-LCs; evaluates both highlight and below-white stimuli.
+  note: The experiment concerns color patches under a specified adaptation condition, not spatial HDR image quality.

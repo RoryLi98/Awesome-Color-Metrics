@@ -50,7 +50,7 @@
   color: partial
   output: map
   tldr: Local luminance, contrast and structure comparison. The contrast term c = 2σxσy/(σx²+σy²) is symmetric and compressed, so it cannot tell a contrast increase from a decrease.
-  note: Local normalization removes global photometric changes, so SSIM barely reacts to color casts (see the guide).
+  note: Local normalization can suppress global photometric changes; sensitivity to casts depends on the color channels and implementation used (see the guide).
 - name: DRIM
   title: Dynamic range independent image quality assessment
   venue: ACM TOG (SIGGRAPH)

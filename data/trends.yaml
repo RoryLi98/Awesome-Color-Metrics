@@ -2,35 +2,45 @@
 - title: From uniform patches to photographs
   text: >-
     Classical formulas were fitted to judgments of uniform patches. SPCD (2023) gave 30,000 rated pairs of real
-    phone photos, and learned or distribution-based metrics now outperform per-pixel ΔE on them.
+    phone photos, allowing learned and distribution-based metrics to be evaluated against whole-image judgments,
+    including pairs with residual misalignment.
   examples: CIEDE2000 → SPCD / CD-Net → CD-Flow → CD-iNet → MS-SWD → CD-Reasoning
 - title: Compare distributions, not pixels
   text: >-
-    Tolerance to misalignment comes from discarding position: histograms and optimal transport for colors, patch
-    distributions for local structure, feature statistics, order statistics or Gram matrices for deep features.
+    Distribution comparisons relax pixel correspondence through color histograms, patch distributions, feature
+    statistics or Gram matrices. Cropping, scene changes and the feature extractor can still change their scores;
+    discarding position does not establish invariance to every geometric transformation.
   examples: Histogram / EMD → sliced Wasserstein → GPDM → MS-SWD · DISTS → DeepWSD → DOSS → DeepSSIM → DeepDC
 - title: Robust is not the same as color-sensitive
   text: >-
-    Metrics that normalize local statistics (SSIM, CW-SSIM, deep Gram features) barely react to color casts, so
-    they look stable under shifts for the wrong reason. Report sensitivity to a real change and the reading under
-    misalignment alone.
+    Stability under shifts does not establish sensitivity to white-balance casts or chroma errors. Normalization,
+    luminance-only processing and semantic features can suppress some color changes. Measure responses to a real
+    color change and to misalignment alone under the same protocol.
   examples: SSIM · CW-SSIM · DeepSSIM vs mean ΔE00 · Lab Wasserstein · MS-SWD
 - title: Visibility models gain color and displays
   text: >-
     Spatial ΔE grew into display-aware visible-difference predictors with chromatic contrast sensitivity, and into
     camera-based measurement of real displays with uncertainty estimates.
   examples: S-CIELAB → FLIP → HDR-VDP-3 → castleCSF → ColorVideoVDP → CameraVDP
-- title: HDR and wide gamut have no settled ΔE
+- title: HDR, wide gamut and highlight adaptation
   text: >-
-    PQ-based and appearance-based spaces extend color difference to high luminance and wide gamuts, but new
-    psychophysical data show no model reaches the desired accuracy yet.
-  examples: ΔE ITP · Jzazbz · CAM16-UCS · sUCS · PCS26-UCS · Basova 2024
+    PQ-based and appearance-based spaces extend color difference to high luminance and wide gamuts. Highlight
+    judgments above diffuse white motivate further adaptations such as IPT-LCs; results depend on luminance,
+    adaptation and the observer datasets used for validation.
+  examples: ΔE ITP · Jzazbz · CAM16-UCS · sUCS · PCS26-UCS · IPT-LCs
 - title: Context, layout and language
   text: >-
     Evidence is growing that averaging point-wise ΔE is not how people judge images: background, spatial pattern
     and content matter. In parallel, MLLM metrics explain differences in words, though general MLLMs still fail
-    at fine color comparison.
-  examples: Becatti 2025 · Baek 2026 · High 2025 · Hammou 2026 · CD-Reasoning · DepictQA · Wu 2024
+    at fine color comparison. TPIPS adds text-conditioned similarity, which should be distinguished from
+    color-difference magnitude, style match and realism.
+  examples: Color difference in context · Texture-dependent color tolerances · CD-Reasoning · TPIPS · ICTone · CFM
+- title: Local discrimination and visible image differences
+  text: >-
+    Empirical three-dimensional discrimination fields, neural Fisher-information models and simplified
+    Riemannian line elements address local color thresholds. Their fit to discrimination data does not by
+    itself validate suprathreshold differences between photographs; model-evaluation measures also matter.
+  examples: Empirical 3D color metric field · V1 Fisher color metric · Conformally-Euclidean line element · STRESS review
 - title: Other views as the reference
   text: >-
     Novel view synthesis has no ground truth at the test pose, so recent metrics score a rendered view against

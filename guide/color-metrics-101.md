@@ -1,5 +1,7 @@
 # Color Metrics 101: Measuring Color and Contrast Change, Aligned or Not
 
+[English](color-metrics-101.md) · [简体中文](color-metrics-101.zh-CN.md)
+
 You have a reference image and a test image (an ISP output, a re-capture, a compressed or edited version) and want
 to know **how much the color and contrast changed**. If every pixel of the test image sits exactly on its
 counterpart in the reference, almost any metric works. If the two are off by even one pixel, most of them start
